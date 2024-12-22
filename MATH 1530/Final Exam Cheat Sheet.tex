@@ -1,0 +1,536 @@
+\documentclass{hmwk}
+
+\hdr{Cheat Sheet}{\textbf{MATH 1530: Abstract Algebra}}{Fall 2024}
+
+\begin{document}
+
+\section{Groups}
+\subsection{Definitions and Properties}
+
+\begin{defn}
+A \textbf{group} is a set $G$ with a binary operation that satisfies \begin{itemize}
+    \item \textbf{Associativity:} $\forall a, b, c \in G, (ab)c = a(bc)$
+    \item \textbf{Identity:} $\exists e \in G$ such that $\forall a \in G$, $ae = ea = a$
+    \item \textbf{Inverses:} $\forall a \in G$, $\exists a^{-1} \in G$ such that $aa^{-1} = a^{-1} = e$
+\end{itemize}
+
+\noindent If $G$ satisfies $ab = ba$ for every $a, b \in G$, then $G$ is \bf{commutative} or \bf{Abelian}.
+\end{defn}
+
+\begin{prop}
+Let $G$ be a group. Then:
+\begin{itemize}
+    \item The identity is unique.
+    \item Left and right cancellation hold.
+    \item Inverses are unique.
+    \item $(ab)^{-1} = b^{-1}a^{-1}$
+    \item $(g^{-1})^{-1} = g$
+\end{itemize}
+\end{prop}
+
+\subsection{Finite Groups; Subgroups}
+
+\begin{defn}
+The \bf{order of a group} is the cardinality of the group. It is denoted $|G|$.
+\end{defn}
+
+\begin{defn}
+The \bf{order of an element} $g$ is the smallest integer $n \geq 1$ such that $g^n = e$. It is denoted $|g|$. If no $n$ exists, then $g$ has infinite order. 
+\end{defn}
+
+\begin{defn}
+If a subset $H$ of a group $G$ is a group under the same operation as $G$, then $H$ is a \bf{subgroup} of $G$. This is denoted $H \leq G$.
+\end{defn}
+
+\begin{prop}
+Let $G$ be a group an $H$ be a subset of $G$. 
+\begin{itemize}
+    \item The \bf{one-step subgroup test} is to check that $a, b \in H$ implies $ab^{-1} \in H$. 
+    \item The \bf{two-step subgroup test} is to check that $a, b \in H$ implies $ab \in H$ and $a^{-1} \in H$. 
+\end{itemize}
+
+In both cases, don't forget to check that $H$ is non-empty!
+\end{prop}
+
+\begin{defn}
+The \bf{center of a group} $G$ is the set of elements in $G$ that commute with every other element. This is denoted $Z(G)$.
+\end{defn}
+
+\begin{defn}
+For an element $a$ in a group $G$, the centralizer of $a$ is the set of elements which commute with $a$. This is denoted $C(a)$.
+\end{defn}
+
+\subsection{Cyclic Groups}
+
+\begin{prop}
+Let $a$ be an element of a group $G$. If $a$ has infinite order, than $a^i = a^j$ if and only if $i=j$. If $a$ has finite order $n$, then $a^i = a^j$ if and only if $i \equiv j \mod n$.
+\end{prop}
+
+\begin{prop}
+Let $a$ be an element of order $n$ in a group and let $k$ be a positive integer. Then $\langle a^k \rangle = \langle a^{\gcd(n, k)} \rangle $ and $|a^k| = n/\gcd(n, k)$.
+\end{prop}
+
+\begin{important}
+\bf{The Fundamental Theorem of Cyclic Subgroups}
+
+Every subgroup of a cyclic group is cyclic. Moreover, if $|\langle a \rangle| = n$, the order of any subgroup of $\langle a\rangle$ is a divisor of $n$, and for each positive divisor $k$ of $n$, the group $\langle a \rangle$ has exactly one subgroup of order $k$, which is $\langle a^{n/k} \rangle$
+\end{important}
+
+\begin{prop}
+If $d$ is a positive divisor of $n$, the number of elements of order $d$ in a cyclic group of order $n$ is $\phi(d)$.
+\end{prop}
+
+\subsection{Permutation Groups}
+
+\begin{defn}
+A \bf{permutation} of a set $X$ is a bijective function $\pi$ from $X$ to $X$.
+\end{defn}
+
+\begin{prop}
+Every permutation of a finite set can be written as a cycle or as a product of disjoint cycles. 
+\end{prop}
+
+\begin{defn}
+The \bf{symmetric group of $X$}, denoted $S_X$, is the collection of all permutations of $X$, with the group law being the composition of permutations. 
+\end{defn}
+
+\begin{prop}
+Every permutation in $S_n$ for $n > 1$ is the product of 2-cycles. 
+\end{prop}
+
+\begin{defn}
+The \bf{alternating group of degree $n$}, denoted $A_n$, is the group of even permutations of $n$ symbols.
+\end{defn}
+
+\subsection{Cosets \& Lagrange's Theorem}
+
+\begin{defn}
+Let $G$ be a group and $H \leq G$. For $a \in G$, the \bf{left coset} of $H$ is the set $$aH = \{ah : h \in H\}$$
+\end{defn}
+
+\begin{prop}
+Let $H$ be a subgroup of $G$ and let $a, b \in G$. Then 
+\begin{itemize}
+    \item $aH = H$ if and only if $a \in H$
+    \item $aH = bH$ if and only if $a \in bH$
+    \item $aH = bH$ or $aH \cap bH = \emptyset$
+    \item $aH = bH$ if and only if $a^{-1}b \in H$
+    \item $|aH| = |bH|$
+    \item $aH = Ha$ if and only if $H = aHa^{-1}$
+    \item $aH$ is a subgroup of $G$ if and only if $a \in H$
+\end{itemize}
+\end{prop}
+
+\begin{important}
+\bf{Lagrange's Theorem}
+
+If $H \leq G$, then $|H|$ divides $|G|$. Furthermore, the number of cosets of $H$ is $|G|/|H|$.
+\end{important}
+
+\begin{defn}
+The \bf{index} of a subgroup $H$ in $G$ is the number of distinct left cosets of $H$ in $G$. This number is denoted by $|G:H|$.
+\end{defn}
+
+\begin{prop}
+For all $a \in G$, the order of $a$ divides the order of $G$. Furthermore $a^{|G|} = e$.
+\end{prop}
+
+\begin{prop}
+A group of prime order is cyclic. 
+\end{prop}
+
+\subsection{Group Homomorphisms, Isomorphisms}
+
+\begin{defn}
+Let $G$ and $G'$ be groups. A \bf{group homomorphism} from $G$ to $G'$ is a function $\phi: G \rightarrow G'$ such that for all $g_1, g_2 \in G$:
+$$\phi(g_1\cdot g_2) = \phi(g_1) \cdot \phi(g_2)$$
+\end{defn}
+
+\begin{defn}
+Let $G$ and $G'$ be groups. These groups are \bf{isomorphic} if there is a bijective homomorphism between $G$ and $G'$.
+\end{defn}
+
+\begin{defn}
+The \bf{kernel} of a homomorphism $\phi$ from a group $G$ to a group with identity $e$ is the set of $g \in G$ such that $\phi(g) = e$. This is denoted $\ker \phi$.
+\end{defn}
+
+\begin{prop}
+Let $\phi$ be a homomorphism from $G$ to $H$ and let $g \in G$. Then
+\begin{itemize}
+    \item $\phi(e_G) = e_H$
+    \item $\phi(g^n) = \phi(g)^n$ for $n \in \Z$
+    \item If $|g|$ is finite, then $|\phi(g)|$ divides $|g|$
+    \item $\ker \phi$ is a subgroup of $G$
+    \item If $\ker\phi = \{e\}$, then $\phi$ is injective
+    \item $\phi(a) = \phi(b)$ iff $a \ker \phi = b \ker \phi$
+    \item If $\phi(g) = h$, then $\phi^{-1}(h) = \{x \in G : \phi(x) = h\} = g \ker \phi$
+\end{itemize}
+\end{prop}
+
+\begin{prop}
+Let $\phi$ be a homomorphism from $G$ to $G'$ and let $H$ be a subgroup of $G$. Then
+\begin{itemize}
+    \item $\phi(H) = \{\phi(h) : h \in H\}$ is a subgroup of $G'$
+    \item If $H$ is cyclic, $\phi(H)$ is cyclic
+    \item If $H$ is Abelian, $\phi(H)$ is Abelian
+    \item If $H$ is normal in $G$, then $\phi(H)$ is normal in $G'$
+    \item If $|\ker \phi| = n$, then $\phi$ is an $n$-to-1 mapping from $G$ to $\phi(G)$
+    \item If $|H| = n$, then $|\phi(H)|$ divides $n$
+    \item If $K$ is a subgroup of $G'$, then $\phi^{-1}(K) = \{x \in G : \phi(x) \in K\}$ is a subgroup of $G$
+    \item If $K$ is a normal subgroup of $G'$, then $\phi^{-1}(K) = \{x \in G : \phi(x) \in K\}$ is a normal subgroup of $G$
+    \item If $\phi$ is onto and $\ker \phi = \{e\}$, then $\phi$ is an isomorphism from $G$ to $G'$
+\end{itemize}
+\end{prop}
+
+\begin{important}
+\bf{The First Isomorphism Theorem}
+
+Let $\phi$ be a group homomorphism from $G$ to $H$. The mapping from $G/\ker\phi$ to $\phi(G)$ given by $g/\ker\phi \mapsto \phi(g)$ is an isomorphism. In symbols, $G/\ker\phi \cong \phi(G)$. If $\phi$ is surjective, then $G/\ker\phi \cong H$.
+\end{important}
+
+\begin{prop}
+Every normal subgroup of a group $G$ is the kernel of a homomorphism of $G$. In particular, a normal subgroup $N$ is the kernel of the mapping $g \mapsto gN$ from $G$ to $G/N$.
+\end{prop}
+
+\begin{defn}
+An isomorphism from a group $G$ onto itself is called an \bf{automorphism} of $G$. Let $a \in G$. The function $\phi_a$ defined by $\phi_a(x) = axa^{-1}$ is called the \bf{inner automorphism} of $G$ induced by $a$. The set of automorphisms, denoted Aut$(G)$, of a group and the set of inner automorphisms, denoted Inn$(G)$, of a group are both groups under the operation of function composition.
+\end{defn}
+
+\subsection{Products of Groups}
+
+\begin{defn}
+Let $G_1, \dots, G_n$ be groups. The \bf{external direct product} of these groups is $$G_1 \times \dots \times G_n = \{(g_1, \dots, g_n) : g_i \in G_i\}$$
+
+We define $(g_1, \dots, g_n) \cdot (g_1', \dots, g_n') = (g_1\cdot g_1', \dots, g_n\cdot g_n')$.
+\end{defn}
+
+\begin{prop}
+The order of an element in the external direct product is the least common multiple of the orders of the components. That is, $|(g_1, g_2, \dots, g_n)| = \text{lcm}(|g_1|, |g_2|, \dots, |g_n|)$.
+\end{prop}
+
+\begin{prop}
+The external direct product of cyclic groups $G_1, G_2, \dots, G_n$ is cyclic iff the orders of $G_i$ and $G_j$ are prime for $i \neq j$.
+\end{prop}
+
+\begin{important}
+\bf{The Fundamental Theorem of Finite Abelian Groups}
+
+Every finite Abelian group $G$ is a direct product of cyclic groups of prime-power order. Thus $$G \cong (\Z/{p_1^{n_1}}\Z) \times \dots \times (\Z/{p_k^{n_k}}\Z)$$
+\end{important}
+
+\begin{prop}
+If $m$ divides the order of a finite Abelian group $G$, then $G$ has a subgroup of order $m$.
+\end{prop}
+
+\begin{prop}
+A finite Abelian group of prime-power order is an internal direct product of cyclic groups.
+\end{prop}
+
+\begin{defn}
+$G$ is the \bf{internal direct product} of $H$ and $K$ and if $G = HK$ and $H \cap K = \{e\}$.
+\end{defn}
+
+\begin{prop}
+If $G$ is the internal direct product of a finite number of subgroups $H_1, H_2, \dots, H_n$, then $G$ is isomorphic to the external direct product of $H_1, H_2, \dots, H_n$.
+\end{prop}
+
+\subsection{Normal Subgroups}
+
+\begin{defn}
+A \bf{normal subgroup} $H$ of a group $G$ is a group such that $aH = Ha$ for all $a \in G$. We denote this by $H \lhd G$.
+\end{defn}
+
+\begin{prop}
+The \bf{normal subgroup test} for $H \leq G$ is to show that $xHx^{-1} \subset H$ for all $x \in G$.
+\end{prop}
+
+\begin{prop}
+Let $G$ be a group and let $H$ be a normal subgroup. The set $G/H = \{aH : a \in G\}$ is a group under the operation $(aH)(bH) = abH$.
+\end{prop}
+
+\newpage
+
+\section{Rings}
+
+\subsection{Definitions and Properties}
+
+\begin{defn}
+A \bf{ring} $R$ is a set with two binary operations, called addition $(a + b)$ and multiplication $(a \cdot b)$ satisfying:
+\begin{itemize}
+    \item $R$ is an abelian group under the addition operation with identity $0_R$
+    \item Multiplication is associative
+    \item Multiplication is left and right distribute over addition
+\end{itemize}
+
+If multiplication is also commutative, $R$ is called a \bf{commutative ring}.
+\end{defn}
+
+\begin{defn}
+The \bf{unity} of a ring $R$ is an element $1_R$ that is the identity under multiplication.
+\end{defn}
+
+\begin{defn}
+A \bf{unit} in a ring is an element that has a multiplicative inverse. 
+\end{defn}
+
+\begin{defn}
+If a subset $S$ of a ring $R$ is a ring under the same operations as $R$, then $S$ is a \bf{subring} of $R$.
+\end{defn}
+
+\begin{prop}
+Let $R$ be a ring and $S$ be a subset of $R$. The \bf{subring test} for $S$ is to check that if $a, b \in S$, then $a - b \in S$ and $ab \in S$. Make sure to check that $S$ is non-empty!
+\end{prop}
+
+\subsection{Integral Domains}
+
+\begin{defn}
+A \bf{zero-divisor} is a non-zero element $a$ of a commutative ring $R$ such that there is a non-zero element $b \in R$ satisfying $ab = 0$.
+\end{defn}
+
+\begin{defn}
+An \bf{integral domain} is a commutative ring with units and no zero-divisors.
+\end{defn}
+
+\begin{prop}
+In an integral domain, \bf{cancellation} holds. That is, if $ab = ac$ and $a \neq 0$, then $b = c$.
+\end{prop}
+
+\begin{defn}
+The \bf{characteristic} of a ring $R$ is the least positive integer $n$ such that $nx = 0$ for all $x \in R$. This is denoted $\text{char} R$. If no $n$ exists, $R$ has characteristic 0. 
+\end{defn}
+
+\begin{defn}
+A \bf{field} is a commutative ring unity in which every non-zero element is a unit. 
+\end{defn}
+
+\begin{prop}
+If $F$ is a field of characteristic $p$, then $F$ contains a subfield isomorphic to $\Z p$. If $F$ is a field of characteristic 0, then $F$ contains a subfield isomorphic to $\Q$.
+\end{prop}
+
+\begin{prop}
+Let $D$ be an integral domain. Then there exists a field $F$ (called the field of quotients of $D$) that contains a subring isomorphic to $D$.
+\end{prop}
+
+\subsection{Ideals and Factor Rings}
+\begin{defn}
+A subring $I$ of a ring $R$ is called an \bf{ideal} of $R$ if for every $r \in R$ and every $a \in I$, $ra \in I$.
+\end{defn}
+
+\begin{prop}
+The \bf{ideal test} is to show that a non-empty subset $I$ of a ring $R$ satisfies:
+\begin{itemize}
+    \item If $a, b \in I$, then $a - b \in I$
+    \item If $a \in I$ and $r \in R$, then $ra \in I$
+\end{itemize}
+\end{prop}
+
+\begin{defn}
+If $I$ is an ideal of $R$, then $R/I$ is called a \bf{factor ring}. The ring operations are:
+\begin{itemize}
+    \item \bf{Addition:} $(s + I) + (t + I) = s + t + I$
+    \item \bf{Multiplication:} $(s + I)(t + I) = st + I$
+\end{itemize}
+\end{defn}
+
+\begin{defn}
+A \bf{prime ideal} $I$ of a commutative ring $R$ is a proper ideal of $R$ such that $ab \in I$ implies $a \in I$ or $b \in I$.
+\end{defn}
+
+\begin{defn}
+A \bf{maximal ideal} $I$ of a commutative ring $R$ is a proper ideal such that if $B$ is an ideal satisfying $I \subset B \subset R$, then $B = I$ or $B = R$.
+\end{defn}
+
+\begin{prop}
+$R/I$ is an integral domain if and only if $I$ is a prime ideal. 
+\end{prop}
+
+\begin{prop}
+$R/I$ is a field if and only if $I$ is a maximal ideal.
+\end{prop}
+
+\subsection{Ring Homomorphisms}
+\begin{defn}
+A \bf{ring homomorphism} is a function $\phi$ from a ring $R$ to a ring $S$ satisfying:
+\begin{itemize}
+    \item $\phi(a + b) = \phi(a) + \phi(b)$
+    \item $\phi(ab) = \phi(a)\phi(b)$
+\end{itemize}
+
+If there is a bijective ring homomorphism from $R$ to $S$, then $R$ and $S$ are \bf{isomorphic}.
+\end{defn}
+
+\begin{prop}
+Let $\phi$ be a ring homomorphism from $R$ to $S$. Let $A$ be a subring of $R$ and $I$ be an ideal of $S$. Then:
+\begin{itemize}
+    \item For any $r \in R$ and positive integer $n$, $\phi(nr) = n\phi(r)$ and $\phi(r^n) = \phi(r)^n$
+    \item $\phi(A)$ is a subring of $S$
+    \item If $A$ is an ideal and $\phi$ is surjective, then $\phi(A)$ is an ideal
+    \item $\phi^{-1}(I)$ is an ideal in $R$
+    \item If $R$ has unity 1, $S \neq \{0\}$, and $\phi$ is surjective, then $\phi(1)$ is the unity of $S$
+\end{itemize}
+\end{prop}
+
+\begin{prop}
+If $R$ is a ring and $\phi$ is a ring homomorphism, $\ker\phi$ is an ideal.
+\end{prop}
+
+\begin{important}
+\bf{The First Isomorphism Theorem for Rings}
+
+Let $\phi$ be a ring homomorphism from $R$ to $S$. The the mapping from $R/\ker\phi$ given by $r + \ker\phi \mapsto \phi(r)$ is an isomorphism. That is, $R/\ker\phi \cong \phi(R)$. If $\phi$ is surjective, then $R/\ker\phi \cong S$.
+\end{important}
+
+\begin{prop}
+Every ideal of a ring $R$ is the kernel of a homomorphism given by $r \mapsto r + I$.
+\end{prop}
+
+\begin{prop}
+For a ring $R$, there is a unique homomorphism $\phi: \Z \rightarrow R$ given by $\phi(n) = n \cdot 1_R$.
+\end{prop}
+
+\subsection{Polynomial Rings}
+
+\begin{defn}
+Let $R$ be a commutative ring. The set $$R[x] = \{a_nx^n + a_{n-1}x^{n-1} + \dots + a_0 : a_i \in R\}$$
+
+is the \bf{ring of polynomials} in $x$ over $R$.
+\end{defn}
+
+\begin{prop}
+Let $F$ be a field and let $f(x), g(x) \in F[x]$ with $g(x)\neq 0$. The \bf{division algorithm} states that there exist unique polynomials $q(x)$ and $r(x)$ in $F[x]$ such that $f(x) = g(x)q(x) + r(x)$ and either $r(x) = 0$ or $\text{deg } r(x) < \text{deg } g(x)$.
+\end{prop}
+
+\begin{defn}
+A \bf{principal ideal domain} is an integral domain $R$ for which every ideal is generated by one element.
+\end{defn}
+
+\begin{prop}
+If $F$ is a field, $F[x]$ is a PID.
+\end{prop}
+
+\begin{prop}
+Let $F$ be a field and $I$ a non-zero ideal in $F[x]$. Then $I = \langle g(x) \rangle$ if and only if $g(x)$ is a non-zero polynomial of minimum degree in $I$.
+\end{prop}
+
+\begin{prop}
+If $D$ is an integral domain, then $D[x]$ is an integral domain.
+\end{prop}
+
+\subsection{Factorization of Polynomials}
+
+\begin{defn}
+Let $D$ be an integral domain. A polynomial $f(x)$ from $D[x]$ that is neither the zero polynomial nor a unit in $D[x]$ is \bf{irreducible} over $D$ if, whenever $f(x)$ is expressed $f(x) = g(x)h(x)$, with $g(x)$ and $h(x)$ from $D[x]$, then either $g(x)$ or $h(x)$ is a unit in $D[x]$. A nonzero, non-unit element of $D[x]$ that is not irreducible over $D$ is called \bf{reducible} over $D$.
+\end{defn}
+
+\begin{prop}
+We have the following \bf{reducibility tests}:
+\begin{itemize}
+    \item Let $F$ be a field. If $f(x) \in F[x]$ and $\text{deg } f(x)$ is 2 or 3, then $f(x)$ is reducible over $F$ if and only if $f(x)$ has a zero in $F$.
+    \item If $f(x) \in \Z[x]$ and $f$ is reducible over $\Q$ then $f$ is reducible over $\Z$.
+    \item Let $p$ be prime and suppose $f(x) \in \Z[x]$ with degree $f(x) \geq 1$. Let $\Tilde{f}(x)$ be the polynomial in $\Z/p\Z$ formed by reducing the coefficients of $f$ modulo $p$. If $\Tilde{f}(x)$ is irreducible over $\Z/p\Z$ and $\text{deg }\Tilde{f} = \text{def }f$ then $f$ is irreducible over $\Q$.
+    \item Let $f(x) = a_nx^n + \dots + a_0 \in \Z[x]$. If there is a prime $p$ such that $p \nmid a_n, p \mid a_{n-1}, \dots, p \mid a_0$ and $p^2 \nmid a_0$ then $f$ is irreducible over $\Q$. 
+    \item Let $p(x) = a_nx^n + \dots + a_0$ be a polynomial of degree $n$ with integer coefficients. If $r/s \in \Q$ in lowest terms is a root of $p(x)$ then $r \mid a_0$ and $s \mid a_n$
+\end{itemize}
+\end{prop}
+
+\begin{defn}
+The \bf{content} of a polynomial is the greatest common divisor of its coefficients. If the content of a polynomial is 1, the polynomial is said to be primitive. 
+\end{defn}
+
+\begin{prop}
+For a primitive polnynomial, irreducibility over $\Z$ is equivalent to irreducibility over $\Q$.
+\end{prop}
+
+\begin{prop}
+Let $F$ be a field. Then $p(x) \in F[x]$ is irreducible if and only if $\langle p(x)\rangle$ is maximal. 
+\end{prop}
+
+\begin{prop}
+Let $F$ be a field and let $p(x), a(x), b(x) \in F[x]$. If $p(x)$ is irreducible over $F$ and $p(x) \mid a(x)b(x)$, then $p(x) \mid a(x)$ or $p(x) \mid b(x)$.
+\end{prop}
+
+\subsection{Divisibility in Integral Domains}
+\begin{defn}
+Elements $a, b$ in an integral domain $D$ are \bf{associates} if $a = ub$ for some unit $u$ of $D$.
+\end{defn}
+
+\begin{defn}
+A non-zero element $a$ of an integral domain $D$ is called a \bf{prime} if $a$ is not a unit and $a \mid bc$ implies $a \mid b$ or $a \mid c$.
+\end{defn}
+
+\begin{prop}
+In an integral domain, every prime is an irreducible.
+\end{prop}
+
+\begin{prop}
+In a PID, an element is an irreducible if and only if it is a prime.
+\end{prop}
+
+\begin{defn}
+An integral domain $D$ is a \bf{unique factorization domain} if every non-zero non-unit element of $D$ can be written as a unique product of irreducibles (up to associates and ordering).
+\end{defn}
+
+\begin{prop}
+Every PID is Noetherian.
+\end{prop}
+
+\begin{prop}
+Every PID is a UFD.
+\end{prop}
+
+\begin{defn}
+An integral domain $D$ is a \bf{Euclidean domain} if there is a function $d$, called the \bf{measure}, from the non-zero elements of $D$ to the non-negative integers such that:
+\begin{itemize}
+    \item for non-zero $a, b \in D$, $d(a) \leq d(ab)$
+    \item if $a, b \in D, b \neq 0$, then there exists unique $q, r \in D$ such that $a = bq + r$ where $r = 0$ or $d(r) < d(b)$
+\end{itemize}
+\end{defn}
+
+\begin{prop}
+Every ED is a PID.
+\end{prop}
+
+\begin{prop}
+If $D$ is a UFD, then $D[x]$ is a UFD.
+\end{prop}
+
+\newpage
+
+\section{Group Actions}
+
+\begin{important}
+\bf{Cayley's Theorem} states that every group is isomorphic to a group of permutations.
+\end{important}
+
+\begin{defn}
+An \bf{action} of a group $G$ on a set $X$ is the choice, for each $g \in G$, of a permutation $\pi_g: X \rarr X$ satisfying:
+\begin{itemize}
+    \item $\pi_e$ is the identity mapping
+    \item for all $g_1, g_2 \in G$, we have $\pi_{g_1} \circ \pi_{g_2} = \pi_{g_1g_2}$
+\end{itemize}
+\end{defn}
+
+\begin{defn}
+The \bf{orbit} of $x$ is the set $\{g \cdot x : g \in G\}$. It is a subset of $X$.
+\end{defn}
+
+\begin{defn}
+The \bf{stabilizer} of $x$ is the set $\{g : g\cdot x = x\}$. It is a subset of $G$.
+\end{defn}
+
+\begin{defn}
+$x$ is a \bf{fixed point} if $\text{Stab}_x = G$ (or if $\text{Orb}_x = \{x\}$). 
+\end{defn}
+
+\begin{important}
+The \bf{Orbit-Stabilizer Theorem} states that $|\text{Orb}_x| = |G|/|\text{Stab}_x|$
+\end{important}
+
+\begin{prop}
+There is a bijection between the set of all $\text{Ord}_x$ and the left cosets of $\text{Stab}_x$ given by $g\text{Stab}_x \mapsto g\cdot x$.
+\end{prop}
+
+\begin{prop}
+Actions of a group $G$ on a set $X$ are the same as group homomorphisms $G \rarr S_x$, since the group action gives the map $\phi: G \rarr S_x, \phi(x) = \pi_g$.
+\end{prop}
+\end{document}

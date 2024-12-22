@@ -1,0 +1,457 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}						
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{algorithm, algorithmic}
+\usepackage{ wasysym }
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{extarrows}
+\usepackage[colorlinks, linktocpage, citecolor = red, linkcolor = blue]{hyperref}
+\usepackage{color}
+\usepackage{tikz}									
+\usepackage{fullpage}
+\usepackage{esdiff}
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=1.0in]{geometry}
+
+\newcommand{\sk}{\smallskip}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newtheorem*{maintheorem}{Main Theorem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{corollary}{Corollary} 
+\newtheorem*{conjecture}{Conjecture} 
+
+\theoremstyle{definition}					                  		
+\newtheorem*{definition}{Definition}
+\newtheorem*{question}{Question}
+\newtheorem*{example}{Example}
+\newtheorem*{ogexample}{Original Example}
+\newtheorem*{construction}{Construction}
+
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{remarks}[theorem]{Remarks}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\title{Important Theorems \& Definitions}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Groups}
+
+\begin{definition}[Group] A group is a set $G$ with a binary operation that satisfies \begin{enumerate}
+    \item Associativity: $(ab)c = a(bc)$
+    \item Identity: $\exists e \in G$ s.t. $\forall a \in G$, $ae = ea = a$
+    \item Inverses: $\forall a \in G$, $\exists a^{-1} \in G$ s.t. $aa^{-1} = a^{-1} = e$
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    In a group, the identity is unique.
+\end{theorem}
+
+\begin{theorem}
+    In a group, left and right cancellation hold.
+\end{theorem}
+
+\begin{theorem}
+    In a group, inverses are unique.
+\end{theorem}
+
+\begin{theorem}
+    For $a, b \in G$, $(ab)^{-1} = b^{-1}a^{-1}$.
+\end{theorem}
+
+\section{Finite Groups \& Subgroups}
+
+\begin{definition}[Order of a Group]
+    The number of elements in $G$ is the order, denoted $|G|$.
+\end{definition}
+
+\begin{definition}[Order of an Element]
+    The order of $g \in G$ is the smallest positive integer $n$ such that $g^n = e$. If no such integer exists, $g$ has infinite order. The order of $g$ is denoted $|g|$.
+\end{definition}
+
+\begin{definition}
+    If $H$ is a subset of $G$ and is a group, then $H$ is a subgroup of $G$.
+\end{definition}
+
+\begin{theorem}
+    The one-step subgroup test for $H$ is to check that $a, b \in H$ implies $ab^{-1} \in H$. Of course, $H$ must also be non-empty.
+\end{theorem}
+
+\begin{theorem}
+    The two-step subgroup test for $H$ is to check that $a, b \in H$ implies $ab \in H$ and $a^{-1} \in H$. Of course, $H$ must also be non-empty.
+\end{theorem}
+    
+\begin{theorem}
+    If $H$ is a non-empty finite subset of $G$ and $H$ is closed under the group operation of $G$, then $H$ is a subgroup. 
+\end{theorem}
+
+\begin{theorem}
+    For $a, \in G, \langle a \rangle$ is a subgroup of $G$.
+\end{theorem}
+
+\begin{definition}
+    The center of a group $G$, denoted $Z(G)$ is the set of elements which commute with every element of $G$. 
+\end{definition}
+
+\begin{theorem}
+    The center of a group is a subgroup.
+\end{theorem}
+
+\begin{definition}
+    For $a \in G$, the centralizer of $a$, denoted $C(a)$ is the set of all elements which commute with $a$. 
+\end{definition}
+
+\begin{theorem}
+    The centralizer of an element is a subgroup.
+\end{theorem}
+
+\section{Cyclic Groups}
+
+\begin{theorem}
+    If $a \in G$ has finite order, then $a^i = a^j$ if and only if $i \equiv j \mod n$ where $n$ is the order of $a$. If $a$ has infinite order, then $a^i = a^j$ if and only if $i = j$.
+\end{theorem}
+
+\begin{corollary}
+    For all $a \in G$, $|a| = |\langle a \rangle|$.
+\end{corollary}
+
+\begin{corollary}
+    For all $a \in G$, if $a^k = e$, then $n$ divides $k$.
+\end{corollary}
+
+\begin{theorem}
+    Let $a$ be an element of order $n$ and let $k$ be a positive integer. Then $\langle a^k \rangle = \langle a^{\gcd(n, k)} \rangle$ and $|a^k| = \frac{n}{\gcd(n, k)}$
+\end{theorem}
+
+\begin{corollary}
+    If $G$ is a finite group, the order of an element divides the order of the group. 
+\end{corollary}
+
+\begin{corollary}
+    Let $|a| = n$. Then $\langle a^i \rangle = \langle a^j \rangle$ if and only if $\gcd(i, n) = \gcd(j, n)$. $|a^i| = |a^j|$ if and only if $\gcd(i, n) = \gcd(j, n)$.
+\end{corollary}
+
+\begin{corollary}
+    Let $|a| = n$. Then $\langle a \rangle = \langle a^j \rangle$ if and only if $\gcd(j, n) = 1$.
+\end{corollary}
+
+\begin{corollary}
+    An integer $k$ is a generator of $\Z/n\Z$ if and only if $\gcd(n, k) = 1$.
+\end{corollary}
+
+\begin{theorem}[Fundamental Theorem of Cyclic Groups]
+    Every subgroup of a cyclic group is cyclic. Moreover, if $|\langle a \rangle| = n$, then the order of any subgroup of $a$ is a divisor of $n$. And, for each positive divisor $k$ of $n$, the group $\langle a \rangle$ has exactly one subgroup of order $k$, namely $\langle a^{n/k} \rangle.$
+\end{theorem}
+
+\begin{theorem}
+    If $d$ is a positive divisor of $n$, the number of elements of order $d$ in a cyclic group of order $n$ is $\phi(d)$.
+\end{theorem}
+
+\begin{corollary}
+    In a finite group, the number of elements of order $d$ is divisible by $\phi(d)$. 
+\end{corollary}
+
+\section{Permutation Groups}
+
+\begin{definition}
+    A permutation of a set $A$ is a function from $A$ to $A$ that is both one-to-one and onto. A permutation group of a set $A$ is a set of permutations of $A$ that forms a group under function composition.
+\end{definition}
+
+\begin{theorem}
+    Every permutation of a finite set can be written as a cycle or as a product of disjoint cycles.
+\end{theorem}
+
+\begin{theorem}
+    Disjoint cycles commute. That is, if cycles $\alpha$ and $\beta$ have no entries in common, then $\alpha\beta = \beta\alpha$.
+\end{theorem}
+
+\begin{theorem}
+    The order of a permutation is the least common multiple of the lengths of the cycles in disjoint cycle representation.
+\end{theorem}
+
+\begin{theorem}
+    Every permutation in $S_n$ when $n > 1$ is the product of 2-cycles.
+\end{theorem}
+
+\begin{lemma}
+    If $\epsilon = \beta_1\beta_2\dots\beta_n$ where each $\beta$ is a 2-cycle, then $n$ is even.
+\end{lemma}
+
+\begin{theorem}
+    If a permutation $\alpha$ can be expressed as the product of an even number of 2-cycles, then every decomposition of $\alpha$ into 2-cycles is even. Similarly for odd. 
+\end{theorem}
+
+\begin{theorem}
+    The even set of permutations in $S_n$ form a subgroup of $S_n$.
+\end{theorem}
+
+\begin{definition}
+    The group of even permutations of $n$ symbols is denoted by $A_n$ and is called the alternating group of degree $n$.
+\end{definition}
+
+\begin{theorem}
+    For $n > 1$, $A_n$ has order $\frac{n!}{2}$
+\end{theorem}
+
+\section{Isomorphisms}
+
+\begin{definition}
+    An isomorphism $\phi$ from $G$ to $G'$ is a one-to-one correspondence that preserves the group operation, meaning $\phi(a)\phi(b) = \phi(ab)$
+\end{definition}
+
+\begin{theorem}
+    Every group is isomorphic to a group of permutations.
+\end{theorem}
+
+\begin{theorem}
+    Suppose that $\phi$ is an isomorphism from $G$ to $H$. Then 
+    \begin{enumerate}
+        \item $\phi(e_G) = e_H$
+        \item $\phi(a^n) = \phi(a)^n$
+        \item $a$ and $b$ commute iff $\phi(a)$ and $\phi(b)$ commute
+        \item $G = \langle a \rangle$ iff $H = \langle \phi(a) \rangle$
+        \item $|a| = |\phi(a)|$
+        \item $x^k = b$ has the same number of solutions in $G$ as $x^k = \phi(b)$ does in $H$. 
+        \item If $G$ is finite, then $G$ and $H$ have exactly the same number of elements of every order
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Suppose that $\phi$ is an isomorphism from $G$ to $H$. Then 
+    \begin{enumerate}
+        \item $\phi^{-1}$ is an isomorphism from $H$ to $G$
+        \item $G$ is Abelian iff $H$ is Abelian
+        \item $G$ is cyclic iff $H$ is cyclic
+        \item If $K$ is a subgroup of $G$, then $\phi(K)$ is a subgroup of $H$
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+    An isomorphism from a group $G$ onto itself is called an automorphism of $G$.
+\end{definition}
+
+\begin{definition}
+    Let $a \in G$. The function $\phi_a$ defined by $\phi_a(x) = axa^{-1}$ is called the inner automorphism of $G$ induced by $a$.
+\end{definition}
+
+\begin{theorem}
+    The set of automorphisms of a group and the set of inner automorphisms of a group are both groups under the operation of function composition.
+\end{theorem}
+
+\begin{theorem}
+    For every positive integer $n$, $\text{Aut}(\Z/n\Z)$ is isomorphic to $U(n)$.
+\end{theorem}
+
+\section{Cosets \& Lagrange's Theorem}
+
+\begin{definition}
+    Let $G$ be a group and $H$ be a subgroup of $G$. For $a \in G$, the left coset of $H$ is $aH$ and the right coset is $Ha$. $a$ is the coset representative for $aH$ or $Ha$.
+\end{definition}
+
+\begin{lemma}
+    Let $H$ be a subgroup of $G$ and let $a, b \in G$. Then 
+    \begin{enumerate}
+        \item $a \in aH$
+        \item $aH = H$ iff $a \in aH$
+        \item $aH = bH$ iff $a \in bH$
+        \item $aH = bH$ or $aH \cap bH = \emptyset$
+        \item $aH = bH$ iff $a^{-1}b \in H$
+        \item $|aH| = |bH|$
+        \item $aH = Ha$ iff $H = aHa^{-1}$
+        \item $aH$ is a subgroup of $G$ iff $a \in H$
+    \end{enumerate}
+\end{lemma}
+
+\begin{theorem}[Lagrange's Theorem]
+    If $G$ is a group and $H$ is a subgroup of $G$, the order of $H$ divides the order of $G$. Moreover, the number of distinct left/right cosets of $H$ in $G$ is $|G|/|H|$.
+\end{theorem}
+
+\begin{corollary}
+    For all $a \in G$, the order of $a$ divides the order of $G$. Furthermore $a^{|G|} = e$
+\end{corollary}
+
+\begin{corollary}
+    A group of prime order is cyclic. 
+\end{corollary}
+
+\begin{corollary}
+    For every integer $a$ and prime $p$, $a^p \equiv a \mod p$
+\end{corollary}
+    
+\begin{theorem}
+    Let $G$ be a group of order $2p$, where $p$ is a prime greater than $2$. Then $G$ is isomorphic to $\Z/2p\Z$ or $D_p$.
+\end{theorem}
+
+%%%%%%%%orbit stabilizer???%%%%%%%%
+
+\begin{theorem}
+    The group of rotations of a cube is isomorphic to $S_4$
+\end{theorem}
+
+\section{External Direct Products}
+
+\begin{definition}
+    Let $G_1, G_2, \dots, G_n$ be a finite collection of groups. The external direct product of these groups is $G_1 \times G_2 \times \dots \times G_n$
+\end{definition}
+
+\begin{theorem}
+    The order of an element in the external direct product is the least common multiple of the orders of the components. That is, $|(g_1, g_2, \dots, g_n)| = \text{lcm}(|g_1|, |g_2|, \dots, |g_n|)$.
+\end{theorem}
+
+\begin{theorem}
+    Let $G$ and $H$ be finite cyclic groups. Then $G \times H$ is cyclic iff the orders of $G$ and $H$ are relatively prime. Furthermore, the external direct product of cyclic groups $G_1, G_2, \dots, G_n$ is cyclic iff the orders of $G_i$ and $G_j$ are prime for $i \neq j$.
+\end{theorem}
+
+\begin{theorem}
+    If $s$ and $t$ are relatively prime, $U(st)$ is isomorphic to $U(s) \times U(t)$. Moreover, $U_s(st)$ is isomorphic to $U(t)$.
+\end{theorem}
+
+\begin{corollary}
+    Let $m = n_1n_2\dots n_k$. Then $U(m)$ is isomorphic to $U(n_1) \times U(n_2) \times \dots \times U(n_k)$ if $\gcd(n_i, n_j) = 1$ for $i \neq j$.
+\end{corollary}
+
+\section{Normal Subgroups \& Factor Groups}
+
+\begin{definition}
+    A subgroup $H$ of a group $G$ is called normal if $aH = Ha$ for all $a \in G$. We denote this by $H \lhd G$.
+\end{definition}
+
+\begin{theorem}
+    A subgroup $H$ is normal in $G$ iff $xHx^{-1} \subset H$ for all $x \in G$.
+\end{theorem}
+
+\begin{theorem}
+    Let $G$ be a group and let $H$ be a normal subgroup. The set $G/H = \{aH : a \in G\}$ is a group under the operation $(aH)(bH) = abH$.
+\end{theorem}
+
+\begin{theorem}
+    Let $G$ be a group and $Z(G)$ be the center. If $G/Z(G)$ is cyclic, then $G$ is Abelian. 
+\end{theorem}
+
+\begin{theorem}
+    For any group $G/Z(G)$ is isomorphic to $\text{Inn}(G)$.
+\end{theorem}
+
+\begin{theorem}
+    Let $G$ be a finite Abelian group and let $p$ be a prime that divides the order of $G$. Then $G$ has an element of order $p$.
+\end{theorem}
+
+\begin{definition}
+    Let $H_1, H_2, \dots, H_n$ be a finite collection of normal subgroups of $G$. We say that $G$ is the internal direct product of $H_1, H_2, \dots, H_n$ and write $G = H_1 \times H_2 \times \dots \times H_n$ if $G = H_1H_2\dots H_n$ and $(H_1H_2\dots H_i) \cap H_{i+1} = \{e\}$ for $1 \leq i < n$.
+\end{definition}
+
+\begin{theorem}
+    If $G$ is the internal direct product of a finite number of subgroups $H_1, H_2, \dots, H_n$, then $G$ is isomorphic to the external direct product of $H_1, H_2, \dots, H_n$.
+\end{theorem}
+
+\begin{theorem}
+    Every group of order $p^2$ where $p$ is prime is isomorphic to $\Z/p^2\Z$ or $\Z/p\Z \times \Z/p\Z$
+\end{theorem}
+
+\begin{corollary}
+    If $G$ is a group of order $p^2$ where $p$ is prime, then $G$ is Abelian
+\end{corollary}
+
+\section{Group Homomorphisms}
+
+\begin{definition}
+    A homomorphism $\phi$ from $G$ to $H$ is a mapping that satisfies $\phi(ab) = \phi(a)\phi(b)$ for $a, b \in G$.
+\end{definition}
+
+\begin{definition}
+    The kernel of a homomorphism $\phi$ from $G$ to a group with identity $e$ is the set $\{g \in G : \phi(g) = e\}$
+\end{definition}
+
+\begin{theorem}
+    Let $\phi$ be a homomorphism from $G$ to $H$ and let $g \in G$. Then
+    \begin{enumerate}
+        \item $\phi(e_G) = e_H$
+        \item $\phi(g^n) = \phi(g)^n$ for $n \in \Z$
+        \item if $|g|$ is finite, then $|\phi(g)|$ divides $|g|$
+        \item $\ker \phi$ is a subgroup of $G$
+        \item $\phi(a) = \phi(b)$ iff $a \ker \phi = b \ker \phi$
+        \item if $\phi(g) = h$, then $\phi^{-1}(h) = \{x \in G : \phi(x) = h\} = g \ker \phi$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Let $\phi$ be a homomorphism from $G$ to $G'$ and let $H$ be a subgroup of $G$. Then
+    \begin{enumerate}
+        \item $\phi(H) = \{\phi(h) : h \in H\}$ is a subgroup of $G'$
+        \item if $H$ is cyclic, $\phi(H)$ is cyclic
+        \item if $H$ is Abelian, $\phi(H)$ is Abelian
+        \item if $H$ is normal in $G$, then $\phi(H)$ is normal in $G'$
+        \item if $|\ker \phi| = n$, then $\phi$ is an $n$-to-1 mapping from $G$ to $\phi(G)$
+        \item if $|H| = n$, then $|\phi(H)|$ divides $n$
+        \item if $K$ is a subgroup of $G'$, then $\phi^{-1}(K) = \{x \in G : \phi(x) \in K\}$ is a subgroup of $G$
+        \item if $K$ is a normal subgroup of $G'$, then $\phi^{-1}(K) = \{x \in G : \phi(x) \in K\}$ is a normal subgroup of $G$
+        \item if $\phi$ is onto and $\ker \phi = \{e\}$, then $\phi$ is an isomorphism from $G$ to $G'$
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    Let $\phi$ be a homomorphism from $G$ to $H$. Then $\ker \phi$ is a normal subgroup of $G$
+\end{corollary}
+
+\begin{theorem}
+    Let $\phi$ be a homomorphism from $G$ to $H$. The mapping from $G/\ker\phi$ to $\phi(G)$ given by $g/\ker\phi \mapsto \phi(g)$ is an isomorphism. In symbols, $G/\ker\phi \cong \phi(G)$. 
+\end{theorem}
+
+\begin{corollary}
+    If $\phi$ is a homomorphism from from a finite group $G$ to $H$, then $|\phi(G)|$ divides $|G|$ and $|H|$.
+\end{corollary}
+
+\begin{theorem}
+    Every normal subgroup of a group $G$ is the kernel of a homomorphism of $G$. In particular, a normal subgroup $N$ is the kernel of the mapping $g \mapsto gN$ from $G$ to $G/N$.
+\end{theorem}
+
+\section{Fundamental Theorem of Finite Abelian Groups}
+
+\begin{theorem}
+    Every finite Abelian group is a direct product of cyclic groups of prime-power order. Moreover, the number of terms in the product and the orders of the cyclic groups are uniquely determined by the group.
+\end{theorem}
+
+\begin{corollary}
+    If $m$ divides the order of a finite Abelian group $G$, then $G$ has a subgroup of order $m$.
+\end{corollary}
+
+\begin{lemma}
+    Let $G$ be a finite Abelian group of order $p^nm$, where $p$ is a prime that does not divide $m$. Then $G = H \times K$ where $H = \{x \in G : x^{p^n} = e\}$ and $K = \{x \in G : x^m = e\}$. Moreover, $|H| = p^n$.
+\end{lemma}
+
+\begin{lemma}
+    Let $G$ be an Abelian group of prime-power order and let $a$ be an element of maximal order in $G$. Then $G$ can be written in the form $\langle a \rangle \times K$.
+\end{lemma}
+
+\begin{lemma}
+    A finite Abelian group of prime-power order is an internal direct product of cyclic groups.
+\end{lemma}
+
+\begin{lemma}
+    Suppose that $G$ is a finite Abelian group of prime-power order. If $G = H_1 \times H_2 \times \dots \times H_m$ and $G = K_1 \times K_2 \times \dots \times K_n$, where each $H_i$ and $K_i$ is a non-trivial cyclic subgroup with $|H_1| \geq |H_2| \geq \dots \geq |H_m|$ and $|K_1| \geq |K_2| \geq \dots \geq |K_n|$, then $m = n$ and $|H_i| = |K_i|$ for all $i$.
+\end{lemma}
+
+\end{document}

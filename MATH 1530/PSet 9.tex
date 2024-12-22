@@ -1,0 +1,97 @@
+\documentclass{hmwk}
+
+\hdr{Problem Set 9}{MATH 1530: Abstract Algebra}{Aly Rajwani}
+\hwk{9}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Problem 1}
+    By applying the irreducibility tests, check if the following polynomials are irreducible or reducible. Justify your answer briefly in each case. If it is reducible, give a factorization into non-units.
+    \begin{itemize}
+        \item[(a)] $x^2 + 2x + 1$ over $\Z/3\Z$ 
+        \item[(b)] $x^5 + 9x^4 + 3x^2 + 6x + 3$ over $\Q$
+        \item[(c)] $x^3 + 3x + 1$ over $\Q$
+        \item[(d)] $x^2 - p$ over $\Q$, $p$ prime
+        \item[(e)] $x^4 + 10x^2 + 1$ over $\Z$
+        \item[(f)] $x^4 + 1$ over $\Z/5\Z$
+        \item[(g)] $x^4 - 4x^3 + 6$ over $\Z$
+    \end{itemize}
+\end{problem}
+
+\begin{solution}
+\begin{itemize}
+    \item[(a)] $x^2 + 2x + 1 = (x+1)(x+1)$ in $\Z/3\Z$, and since $x+1$ is not a unit, $x^2 + 2x + 1$ is reducible in $\Z/3\Z$.
+    
+    \item[(b)] Applying Theorem 2.4, we see that 3 divides each coefficient except the leading coefficient, and that $3^2$ does not divide the constant term. Thus, $x^5 + 9x^4 + 3x^2 + 6x + 3$ is irreducible over $\Q$. 
+    
+    \item[(c)] By the Rational Root Theorem, if $r/s \in Q$ in reduced form is a root of $x^3 + 3x + 1$, then $r \mid 1$ and $s \mid 1$. Thus, the only possible roots are $1$ and $-1$. Neither of these are roots, and so this polynomial has no roots. Thus, by Theorem 2.1, $x^3 + 3x + 1$ is irreducible over $\Q$. 
+    
+    \item[(d)] Applying Theorem 2.4, we see that $p$ divides each coefficient except the leading coefficient, and that $p^2$ does not divide the constant term. Thus, $x^2 - p$ is irreducible over $\Q$.
+    
+    \item[(e)] Suppose towards contradiction that $x^4 + 10x^2 + 1$ is reducible over $\Z$. Since the leading coefficient is 1, it cannot factor into any non-unit constant term. So, the only possible factorizations are into two quadratic polynomials or a cubic polynomial and a linear polynomial. In both cases, we will derive a contradiction, thus proving that $x^4 + 10x^2 + 1$ is irreducible over $\Z$. 
+
+    Suppose $x^4 + 10x^2 + 1 = (ax^2 + bx + c)(dx^2 + ex + f)$. Multiplying the right side, we see that $ad = 1$, so $a = d = 1$ or $a = d = -1$. In any case, $a = d$. Similarly, $c = f$. The coefficient of the $x^3$ term is $ae + bd = a(e + b) = 0$. Since $a$ is non-zero, $e = -b$. The coefficient of the $x^2$ term is $af + be + cd = 10$. Substituting with the expressions we previously derived, we see that $ac - b^2 + ac = 10$, and so $b^2 = 2ac - 10$. Since $a, c \in \{1, -1\}$, $2ac = \pm 1$, and so $b^2 < 0$. For $b \in \Z$, this is a contradiction, and so there is no factorization into two quadratic polynomials. 
+
+    Suppose $x^4 + 10x^2 + 1 = (ax + b)(cx^3 + dx^2 + ex + f)$. Using the same reasoning as in the previous case, we see that $a = c$ and $b = f$. The coefficient of the $x^3$ term is $ad + bc = a(d + b) = 0$. Since $a$ is non-zero, $d = -b$. The coefficient of the $x$ term is $af + be = b(a + e)$. Since $b$ is non-zero, $a = -e$. The coefficient of the $x^2$ terms is $ae + bd = -a^2 - b^2 = 10$. Thus, $a^2 + b^2 = -10$, but this is not possible for $a, b \in \Z$. Thus, $x^4 + 10x^2 + 1$ does not factor into a cubic polynomial and a linear polynomial.
+
+    Since neither of the possible factorizations work, $x^4 + 10x^2 + 1$ is irreducible over $\Z$. 
+    
+    \item[(f)] $x^4 + 1 = (x^2 + 2)(x^2 + 3)$ over $\Z/5\Z$, and since neither of $x^2 + 2$ and $x^2 + 3$ is a unit, $x^4 + 1$ is reducible in $\Z/5\Z$. 
+    
+    \item[(g)] Applying Theorem 2.4, we see that 2 divides each coefficient except the leading coefficient and that $2^2$ does not divide the constant term. Thus, $x^4 - 4x^3 + 6$ is irreducible over $\Q$. Thus, if this polynomial has a non-unit factor $f(x)$, then $f(x)$ is a unit in $\Q$ that is not a unit in $\Z$. So, $f(x) = n$ for $n \in \Z\bs\{1, 0, -1\}$. Since the leading term of $x^4 - 4x^3 + 6$ is 1, such an $f(x)$ cannot be a factor in $\Z$, and so no factor exists, meaning $x^4 - 4x^3 + 6$ is irreducible. 
+\end{itemize}
+\end{solution}
+
+\begin{problem}{Problem 2}
+    Let $F$ be a field.
+    \begin{itemize}
+        \item[(a)] Show that $p(x) \in F[x]$ is irreducible if and only if $(p(x))$ is maximal. Deduce that $F[x]/(p(x))$ is a field if and only if $p(x)$ is irreducible. (You can use without proof that if $f(x)|g(x)$ then $(f(x)) \subset (g(x)).)$
+        \item[(b)] Let $p(x), a(x), b(x) \in F[x]$, and $p(x)$ irreducible over $F$. Show if $p(x)|a(x)b(x)$ then $p(x)|a(x)$ or $p(x)|b(x).$
+    \end{itemize}
+\end{problem}
+
+\begin{solution}
+\begin{itemize}
+    \item[(a)] Oh goodness, a biconditional! Let's prove both directions. 
+
+    First, suppose $(p(x))$ is maximal. We want to show that $p(x)$ is irreducible. Since $(p(x))$ is maximal, if $I$ is an ideal, then $(p(x)) \subset I \subset F[x]$ implies $I = (p(x))$ or $I = F[x]$. Suppose that $p(x) = f(x)g(x)$, and so $(p(x)) \subset (f(x))$. Then $(f(x))$ must equal $(p(x))$ or $F[x]$. In the former case, $g(x)$ is a unit, and in the latter $f(x)$ is a unit. Thus, $p(x)$ cannot be decomposed into non-units, and so $p(x)$ is irreducible.
+
+    For the other direction, we will use the contrapositive, namely proving that if $(p(x))$ is not maximal, then $p(x)$ is reducible. Suppose $(p(x))$ is not maximal, so there exists an ideal $I$ such that $(p(x)) \subsetneq I \subsetneq F[x]$. Since $F$ is a field, $F[x]$ is a PID, and so $I = (q(x))$ for some $q(x) \in F[x]$. Since $(p(x)) \subset (q(x))$, $p(x) = q(x)r(x)$ for some $r(x) \in F[x]$. It cannot be that $q(x)$ is a unit, since $(q(x)) \neq F[x]$, and it cannot be that $r(x)$ is a unit, since that would imply $p(x)r^{-1}(x) = q(x)$, and so $p(x) \mid q(x)$ with $(q(x)) \subset (p(x))$. Thus, we have represented $p(x)$ as $q(x)r(x)$ where neither $q(x)$ nor $r(x)$ is a units, so $p(x)$ is reducible. 
+
+    Now that we have proved that $p(x)$ is irreducible if and only if $(p(x))$ is maximal, we can combine this with Theorem 14.4 from Gallian, which states that if $R$ is a commutative ring with identity, then $R/A$ is a field if and only if $A$ is maximal. Since a field $F[x]$ is a commutative ring with identity, we have that $F[x]/(p(x))$ is a field if and only if $(p(x))$ is maximal, and $(p(x))$ is maximal if and only if $p(x)$ is irreducible. Thus, $F[x]/(p(x))$ is a field if and only if $p(x)$ is irreducible. 
+    
+    \item[(b)] Suppose that $p(x) \mid a(x)b(x)$ and consider the ideal $I = \left\{p(x)f(x) + a(x)g(x) : f(x), g(x) \in F[x]\right\}$. Since $F$ is a field $F[x]$ is a PID, so $I = (d(x))$. Since $p(x) \in I$, $p(x) = d(x)r(x)$, and since $p(x)$ is irreducible, either $d(x)$ or $r(x)$ is a unit.
+    
+    If $d(x)$ is a unit, then $I = F[x]$ and so $1 = p(x)f(x) + a(x)g(x)$ for some $f(x), g(x) \in F[x]$. Multiplying both sides by $b(x)$, we get $b(x) = p(x)f(x)b(x) + a(x)g(x)b(x)$. Since $p(x)$ was assumed to divide $a(x)b(x)$, $p(x)$ divides the right side of the equation, so it must also divide the left, and $p(x)$ divides $b(x)$. If $r(x)$ is a unit, then $(p(x)) = (d(x)) = I$, and so $a(x) \in (p(x))$. This implies that $a(x) = p(x)t(x)$ and so $p(x)$ divides $a(x)$. 
+    
+    Thus, if $p(x) \mid a(x)b(x)$, then $p(x) \mid a(x)$ or $p(x) \mid b(x)$. 
+\end{itemize}
+\end{solution}
+
+\begin{problem}{Problem 3}
+    Construct the following. (It is enough to write it as $F[x]/(p(x))$.) Justify briefly in each case why the field has the correct number of elements.
+    \begin{itemize}
+        \item[(a)] A field with 9 elements.  (Hint: start with $F = \Z/3\Z$ and find an appropriate $p(x) \in F[x]$.)
+        \item[(b)] A field with 121 elements.
+        \item[(c)] A field with 27 elements.
+        \item[(d)] A field with 49 elements.
+    \end{itemize}
+\end{problem}
+
+\begin{solution}
+
+\pre Before answering, we note that by the division algorithm, if we have a polynomial $f(x)$, then we can express $f(x)$ as $n(x)q(x) + r(x)$ where $r(x) = 0$ or the degree of $r(x)$ is less than the degree of $n(x)$. 
+
+\pre In general, to find a field of order $p^n$ with $p$ prime, we let $F = \Z/p\Z$, and find an irreducible polynomial $n(x)$ of degree $n$, and then $F[x]/(n(x))$ is a field of order $p^n$. This is true because for $f(x) \in F[x]$, by the division algorithm, we have that $f(x) + (n(x)) = r(x) + (n(x))$ where $r(x) = a_{n-1}x^{n-1} + a_{n-2}x^{n-2} + \dots + a_0$ and $a_i \in \Z/p\Z$. Since there are $p$ choices for each coefficient and $n$ coefficients, there are $p^n$ choices for $r(x)$, and thus $p^n$ elements in $F[x]/(n(x))$. 
+
+\pre Note that $F[x]/(n(x))$ is indeed a field because we stated $n(x)$ to be irreducible, and so by problem 2a, $F[x]/(n(x))$ is a field. As well, since for any $r(x)$, we can take the coset $r(x) + (n(x))$, each of the $p^n$ options are members of the field. 
+
+\begin{itemize}
+    \item[(a)] Let $F = \Z/3\Z$ and let $p(x) = x^2 + 1$. Then $p(x)$ is an irreducible polynomial of degree 2 over $\Z/3\Z$, and so $F[x]/(p(x))$ has order $3^2 = 9$. 
+    \item[(b)] Let $F = \Z/11\Z$ and let $p(x) = x^2 + 1$. Then $p(x)$ is an irreducible polynomial of degree 2 over $\Z/11\Z$, and so $F[x]/(p(x))$ has order $11^2 = 121$. 
+    \item[(c)] Let $F = \Z/3\Z$ and let $p(x) = x^3 + 2x + 1$. Then $p(x)$ is an irreducible polynomial of degree 3 over $\Z/3\Z$, and so $F[x]/(p(x))$ has order $3^3 = 27$.
+    \item[(d)] Let $F = \Z/7\Z$ and let $p(x) = x^2 + 1$. Then $p(x)$ is an irreducible polynomial of degree 2 over $\Z/7\Z$, and so $F[x]/(p(x))$ has order $7^2 = 49$.
+\end{itemize}
+\end{solution}
+\end{document}

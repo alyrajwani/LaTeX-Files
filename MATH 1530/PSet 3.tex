@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{Math 1530 PSet 3}
+\author{Aly Rajwani}
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item We will prove this is false by counterexample. Consider $U(8)$, which is the group of numbers coprime with 8 modulo 8. We have that $U(8) = \{1, 3, 5, 7\}$, and the proper subgroups of $U(8)$ are $\{1\} = \langle1\rangle, \{1, 3\} = \langle3\rangle, \{1, 5\} = \langle5\rangle,$ and $\{1, 7\} = \langle7\rangle$. Since each element in $U(8)$ is its own inverse, and since the order of $U(8)$ is 4, no element can generate the group, despite every proper subgroup being cyclic. Hence, the statement is false. 
+
+    \item Let $H$ and $K$ be subgroups of $G$. Then, by definition of a subgroup, $e \in H$ and $e \in K$, so $H \cap K \neq \emptyset$. Now, we use the two-step subgroup test, showing that $a, b \in H\cap K$ implies that  $ab \in H\cap K$ and that $a \in H \cap K$ implies that $a^{-1} \in H \cap K$. First, since $a, b \in H \cap K$, $a, b \in H$ and $a, b \in K$. Then, since $H$ and $K$ are subgroups, they are closed under the group operation, so $ab \in H$ and $ab \in K$. These two facts together imply that $ab \in H \cap K$, so $H\cap K$ is closed under the group operation. Next, if $a \in H\cap K$, then $a \in H$ and $a \in K$. Then, since $H$ and $K$ are subgroups, $a^{-1} \in H$ and $a^{-1} \in K$. These two facts together imply that $a^{-1} \in H\cap K$. Since $H \cap K$ contains the identity, is closed under the group operation, and contains inverses, $H \cap K$ is a subgroup of $G$.
+
+    \smallskip
+
+    Next, if $H \not\subset K,$ there is an element of $H$ that is not in $K$. Similarly, if $K \not\subset H, \exists k \in K$ with $k \notin H$. Consider $H \cup K$. Since $h \in H, h \in H \cup K$, and since $k \in K, k \in H \cup K$. Now, we will show that $H \cup K$ being a subgroup leads to a contradiction, and thus $H \cup K$ can never be a subgroup. Suppose $H \cup K$ is a subgroup. Then, since it is closed under the group operation and since $h, k \in H \cup K, hk \in H \cup K$. This implies $hk \in H$ or $hk \in K$. However, $h^{-1} \in H$, so $h^{-1}hk = k \in H$, but this is a contradiction. Similarly, $k^{-1} \in K$, so $hkk^{-1} = h \in K$, but this is a contradiction. Since $H\cup K$ being a subgroup leads to a contradiction, $H \cup K$ can never be a subgroup of $G$. 
+
+    \item A wild biconditional has appeared! Use "prove both directions"!
+
+    \textit{If $G$ is a finite group, it has a finite number of subgroups.}
+
+    Since $G$ is finite, there are $2^{|G|}$ possible subsets of $G$. Since every subgroup is a subset of $G$, the number of subgroups is bounded by the number of subsets, so there are at most $2^{|G|}$ subgroups, which is finite. 
+
+    \textit{If $G$ has a finite number of subgroups, $G$ is finite.}
+
+    If $G$ has a finite number of subgroups, it must also have a finite number of cyclic subgroups. Suppose one of these cyclic subgroups was infinite, namely $\langle g \rangle = \{e, g, g^1, g^2, \dots\}$ where each $g^n$ is distinct. From this subgroup, we can generate other distinct subgroups $\langle g^p \rangle = \{e, g^{p}, g^{2p}, \dots\}$ where $p$ is prime. Since there are infinitely many primes $p$, there are infinitely many subgroups, which is a contradiction. Thus, there can be no cyclic subgroup of infinite order. Since every element of $G$ will generate a cyclic subgroup, we can represent $G$ as the union of all its cyclic subgroups. So, $G = \bigcup_{n=1}^N \langle g_n \rangle$ where $N$ is the number of cyclic subgroups. Since we have represented $G$ as a finite union of finite sets, $G$ itself must be finite. 
+
+    \item 
+        \begin{enumerate}
+            \item To prove that this is a group under multiplication, we must show that it is closed under the operation, inverses exist, an identity exists, and the group is associative. 
+
+            \smallskip
+
+            Since the group operation is standard multiplication modulo $n$, which is already associative, we have associativity. 
+
+            \smallskip
+
+            As with standard multiplication modulo $n$, 1 is the identity, and 1 $\in U(n)$ because we can take $b=1$, and so $1\cdot b = 1$. 
+
+            \smallskip
+
+            Suppose we have some $a \in U(n)$. Then we want to show that there is an $a^{-1} \in U(n)$ such that $aa^{-1} = a^{-1}a = 1$. Since $a \in U(n)$, we know $\exists b \in \mathbb{Z}/n\mathbb{Z}$ such that $ab = 1$. We will take $b$ to be $a^{-1}$. We know $b \in U(n)$ because $ba = 1$, and $a \in \mathbb{Z}/n\mathbb{Z}$. Thus, each $a$ has an inverse in $U(n)$.
+
+            \smallskip
+
+            Suppose $a, c \in U(n)$. Then $\exists b, d \in \mathbb{Z}/n\mathbb{Z}$ such that $ab = cd = 1$. Consider $ac \mod n \in \mathbb{Z}/n\mathbb{Z}$. Then we have $bd \mod n\in \mathbb{Z}/n\mathbb{Z}$, and $(ac)(bd) = (ab)(cd) = 1 \cdot 1 = 1$, and so $ac \in U(n)$, so $U(n)$ is closed.  
+
+            \smallskip
+
+            Since $U(n)$ satisfies these properties, it is a group under multiplication. 
+
+            \smallskip
+
+            $U(n)$ is not a subgroup of $\mathbb{Z}/n\mathbb{Z}$. This is because $\mathbb{Z}/n\mathbb{Z}$ is only a group when defined with the addition operation, but $U(n)$ uses multiplication. If we attempt to use multiplication for $\mathbb{Z}/n\mathbb{Z}$, we find that any element $k$ satisfying $\gcd(k, n) > 1$ will not have an inverse, and so it would not be a group. Thus, $U(n)$ cannot be a subgroup of $\mathbb{Z}/n\mathbb{Z}$, since they cannot share the same operation. 
+
+            \item The number of elements in $U(n)$ is the number of elements in $\mathbb{Z}/n\mathbb{Z}$ which are coprime with $n$. This number is expressed as $\varphi(1) = 0$ and $\varphi(n) = n \cdot \prod_{p|n}\left(1 - \frac{1}{p}\right)$ where $p$ is a prime. 
+
+            \item We will prove this by contradiction. Suppose that $G$ is cyclic, namely that $G = \langle g\rangle$, and we have two elements $a, b \in G$ satisfying $a \neq b, a^2 = e, b^2 = e$. Since every element in this group can be represented as $g^k$, so we set $a = g^i$ and $b = g^j$, and suppose $i < j$. Then, we have that $g^{2i} = e$ and $g^{2j} = e$, so $g^{2i} = g^{2j}$. If $G$ is infinite, then we have a contradiction, since each element in an infinite cyclic group is distinct (otherwise it would not be an infinite group), and yet we have $g^{2i} = g^{2j}$ but $2i \neq 2j$. If $G$ is finite, let $n = |g|$. Then the only solutions to $g^{2x} = e$ modulo $n$ are $x = 0$ and $x = \frac{n}{2}$. Since $a, b \neq e$, it must be that $i \equiv j \equiv \frac{n}{2} \mod n$. So, we can express $i$ as $\frac{n}{2} + kn$ and $j$ as $\frac{n}{2} + k'n$
+            
+            We then have the following: $$a =  g^i= g^{\frac{n}{2} + kn} = g^{\frac{n}{2}}g^{kn} = g^{\frac{n}{2}}g^{k'n} = g^{\frac{n}{2} + k'n} = g^{j} = b$$ 
+            
+            where $g^{kn} = g^{k'n} = e$ because $n$ is the order of $g$. But, this contradicts $a$ and $b$ being distinct. Thus, we cannot have a cyclic group with two distinct elements of order 2. 
+
+            \smallskip
+
+            We will construct two elements of order 2, which shows that $U(2^n)$ is not cyclic by the above argument. Consider $2^n - 1$. For $n \geq 3$, this is an element of $U(2^n)$. We have that $\left(2^n - 1\right)^2 \equiv 2^{2n} - 2^{n+1} + 1 \equiv 1 \mod 2^n$, and so $2^n - 1$ has order 2. Next, consider $2^{n-1} + 1$. For $n \geq 3$, this is an element of $U(2^n)$. For $n \geq 3$, we have that $2n - 2 > n$, and so we have that $\left(2^{n-1} + 1\right)^2 \equiv 2^{2n-2} + 2^n + 1 \equiv 1 \mod 2^n$. So, $2^{n-1} + 1$ also has order 2. For $n \geq 3$, $2^n - 1 \neq 2^{n-1} + 1$. Since we have found two distinct elements of order 2, $U(2^n)$ cannot be cyclic. 
+
+            \item $U(2) = \{1\} = \langle 1 \rangle$
+
+            $U(3) = \{1, 2\} = \langle 2 \rangle$
+
+            $U(5) = \{1, 2, 3, 4\} = \langle 2 \rangle$
+        \end{enumerate}
+    \item We will prove this by demonstrating that $e$ is in $\langle a \rangle \cap \langle b \rangle$, and then showing that any $g \in \langle a \rangle \cap \langle b \rangle$ must be equal to $e$. Thus, $\langle a \rangle \cap \langle b \rangle$ must be $\{e\}$. First, $e \in \langle a \rangle$ and $e \in \langle b \rangle$, so $e \in \langle a \rangle \cap \langle b \rangle$. Before proceeding, we note that by Bezout's Lemma, we have $\exists s, t \in \mathbb{Z}$ satisfying $ns + mt = 1$, where $n = |\langle a \rangle|$ and $m = |\langle b \rangle|$. This comes from the fact that $n$ and $m$ are coprime. As well, since $n$ is the order of $\langle a \rangle$, $g \in \langle a \rangle$ implies that $g^n = e$. By similar reasoning, $g^m = e$. Now, we have the following:
+
+    $$g = g^{ns+mt} = (g^n)^s(g^m)^t = e^se^t = e$$ 
+
+    So, any $g \in \langle a \rangle \cap \langle b \rangle$ must be equal to $e$, and thus $\langle a \rangle \cap \langle b \rangle = \{e\}$.
+
+    \item We will use the Fundamental Theorem of Cyclic groups, namely that every subgroup of a cyclic group is cyclic. By showing $H$ is a subgroup of a cyclic group, we prove $H$ is cyclic. 
+
+    \smallskip
+
+    Take $g = \gcd(a_1, a_2, \dots, a_n)$ and $l = \text{lcm}(b_1, b_2, \dots, b_n)$, then let $h = \frac{g}{l}$. We will consider the cyclic group $\langle h \rangle$ under the addition operation. 
+
+    \smallskip
+
+    Choose $\frac{a_k}{b_k} \in H$ arbitrarily. Then, by definition of $g$, $gt = a_k$ for some $t \in \mathbb{Z}$. By definition of $l, l = sb_k$ for some $s \in \mathbb{Z}$. Then, $\frac{a_k}{b_k} = \frac{gt}{\frac{l}{s}} = st\cdot h$ where $st \in \mathbb{Z}$. Since $k$ was arbitrary, every element of $H$ is an element of $\langle h \rangle$. Since $H$ is a subgroup of a cyclic group, $H$ is cyclic by the Fundamental Theorem of Cyclic Groups. 
+\end{enumerate}
+
+\end{document}
