@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+
+\title{Math 1530 PSet 4}
+\author{Aly Rajwani}
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item A function is one-to-one if $f(x_1) = f(x_2)$ implies $x_1 = x_2$. We are given that $\alpha$ and $\beta$ are both one-to-one, and we wish to show that $\beta\alpha$ is one-to-one. Consider $\beta\alpha(x_1) = \beta\alpha(x_2)$. Since, $\beta$ is one-to-one, this implies that $\alpha(x_1) = \alpha(x_2)$. Since $\alpha$ is one-to-one, this implies that $x_1 = x_2$. Thus, $\beta\alpha(x_1) = \beta\alpha(x_2)$ implies that $x_1 = x_2$, and so $\beta\alpha$ is one-to-one. 
+        
+        \item Let $\alpha: \mathbb{R} \rightarrow \mathbb{R}$ be the identity function. Then $\alpha$ is one-to-one, since $\alpha(x_1) = \alpha(x_2)$ directly implies $x_1 = x_2$. Let $\beta(x): \mathbb{R} \rightarrow \mathbb{R}$ be defined as $\beta(x) = x^2$. Then $\beta\alpha(1) = 1^2 = 1 = (-1)^2 = \beta\alpha(-1)$, and so $\beta\alpha$ is not one-to-one.
+        
+        \item A function $f: A \rightarrow B$ is onto if $\forall b \in B, \exists a \in A$ s.t. $f(a) = b$. We are given that $\alpha$ and $\beta$ are both onto, and we wish to show that $\beta\alpha$ is onto. Consider $c \in C$. Then, since $\beta$ is onto, there is some $b \in B$ such that $\beta(b) = c$. For such a $b$, since $\alpha$ is onto, there exists an $a \in A$ such that $\alpha(a) = b$. So, we have found an $a \in A$ such that $\beta\alpha(a) = c$, implying that $\beta\alpha$ is onto.
+        
+        \item Let $\beta: \mathbb{R} \rightarrow \mathbb{R}$ be the identity function. Then $\beta$ is onto, since $\forall x \in \mathbb{R}$, $\beta(x) = x$. Let $\alpha: \mathbb{R} \rightarrow \mathbb{R}$ be defined by $\alpha(x) = x^2$. Then there is no $x \in \mathbb{R}$ such that $\alpha(x) = -1$, and since $\beta$ is the identity function, there is no $x \in \mathbb{R}$ such that $\beta\alpha(x) = -1$. Thus, $\beta\alpha$ is not onto. 
+    \end{enumerate}
+    \item We will prove this by contrapositive, proving that if $\alpha$ and $\beta$ do not have the same cycle type, then $\langle\alpha\rangle \neq \langle\beta\rangle$. 
+
+    If $\alpha$ and $\beta$ do not have the same cycle type, then there is some set in the cycle type of $\alpha$ which differs from a set in the cycle type of $\beta$. Let's denote these sets as $\alpha_1 = (a_1, a_2, \dots, a_n)$ and $\beta_1 = (b_1, b_2, \dots, b_n)$. Then, there is either an $a_i \in \alpha_1$ such that no $b_k \in \beta_1$ satisfies $\beta(b_k) = a_i$, or there is a similar $b_i \in \beta.$ Assume without loss of symmetry that there is an $a_i \in \alpha_1$, such that there is no $b_k \in \beta_1$ satisfying $\beta(b_k) = a_i$. But this means that there is an element $a \in \langle \alpha \rangle$ that can never exist in $\langle \beta \rangle$, and so $\langle \alpha \rangle \neq \langle \beta \rangle$. This statement implies by contrapositive that if $\langle \alpha \rangle = \langle \beta \rangle$, then $\alpha$ and $\beta$ have the same cycle type.
+
+    \item To prove that the centralizer of $\alpha$ is $\langle \alpha \rangle$, we will show that both sets are subsets of each other. 
+
+    \textit{Proof that $\langle \alpha \rangle \subset C(\alpha)$:}
+
+    Let $\beta \in \langle \alpha \rangle$. Then $\beta = \alpha^k$ for some $k \in \mathbb{Z}$. Then we have the following:
+    
+    $$\beta\alpha = \alpha^k\alpha = \alpha^{k+1} = \alpha^{1+k} = \alpha\alpha^k = \alpha\beta$$
+
+    Thus, if $\beta \in \langle \alpha \rangle$, $\beta$ commutes with $\alpha$, and so $\beta \in C(\alpha)$.
+
+    Since all $\beta \in \langle \alpha \rangle$ also satisfy $\beta \in C(\alpha)$, we have that $\langle \alpha \rangle \subset C(\alpha)$.
+
+    \textit{Proof that $C(\alpha) \subset \langle \alpha \rangle$:}
+
+    Let $\beta \in C(\alpha)$, so $\beta\alpha = \alpha\beta$. Let $\alpha = (a_1, a_2, \dots, a_n)(b_1, b_2, \dots, b_m)\dots$.
+
+    Without loss of generality, consider the cycle $(a_1, a_2, \dots, a_n)$ and the term $\beta\alpha(a_1)$. We have that $\beta\alpha(a_1) = \beta(a_2) = \alpha\beta(a_1)$, since $\beta$ and $\alpha$ commute. Let $\beta(a_1) = a_i$. This means that $\beta(a_2) = \alpha\beta(a_1) = \alpha(a_i) = a_{(i \mod n) + 1}$. We can continue this pattern in a similar fashion, and then generalize it to demonstrate the relationship between $\alpha$ and $\beta$.
+
+    Since $a_3 = \alpha(a_2)$, it must be that $\beta(a_3) = \beta\alpha(a_2) = \alpha\beta(a_2) = \alpha(a_{(i \mod n) + 1}) = a_{(i+1 \mod n) + 1}$. We now have enough information to generalize the pattern.
+
+    Let $\beta(a_k) = a_i$. We have that $\alpha(a_k) = a_{k+1}$. So, $\beta(a_{k+1}) = \beta\alpha(a_k) = \alpha\beta(a_k)$, since $\alpha$ and $\beta$ commute. Then $\alpha\beta(a_k) = \alpha(a_i) = a_{(i + 1 \mod n) + 1}$. Thus, $\beta(a_k) = a_i$ implies that $\beta(a_{k+1}) = a_{(i + 1 \mod n) + 1}$. 
+
+    $\beta$ has the effect of shifting each term once to the right in the permutation, which is the same property that $\alpha$ exhibits, and so $\beta = \alpha^j$, where $\beta(a_1) = a_{j+1}$. Thus, $\beta \in \langle \alpha \rangle$.
+
+    Since all $\beta \in C(\alpha)$ satisfy $\beta \in \langle \alpha \rangle$, we have that $C(\alpha) \subset \langle \alpha \rangle$.
+
+    Since both of these sets are subsets of each other, they must be equal, and so $C(\alpha) = \langle \alpha \rangle$
+
+    \item We have a biconditional, so there are two directions to prove. 
+
+    First, we show that if $\tau\alpha\tau^{-1} = \beta$ for $\alpha, \beta, \tau \in S_n$, then $\alpha$ and $\beta$ have the same list of lengths in disjoint cycle type representation. 
+
+    Given $\alpha = (a_1, a_2, \dots, a_n)(b_1, b_2, \dots, b_m)\dots$. Consider the following permutation: $$(\tau a_1, \tau a_2, \dots, \tau a_n)(\tau b_1, \tau b_2, \dots, \tau b_m)\dots$$
+
+    We will show that this permutation is equivalent to $\tau \alpha \tau^{-1}$, and thus equal to $\beta$. Since this permutation has identical lengths to $\alpha$ in disjoint cycle type representation, $\alpha$ and $\beta$ will have the same list of lengths in disjoint cycle type representation.
+
+    This permutation maps $\tau (x_k)$ to $\tau (x_{k+1})$ modulo the number of elements in the cycle associated with $x_k$. $\tau \alpha \tau^{-1}$ maps $\tau (x_k)$ in the following way:
+
+    $$\tau \alpha \tau^{-1} \tau (x_k) = \tau \alpha (x_k) = \tau (x_{k+1})$$
+
+    Since $x_k$ was an arbitrary element, the permutations are equal, which shows that $\alpha$ and $\beta$ have the same list of lengths in disjoint cycle type representation.
+
+    Second, we show that if $\alpha$ and $\beta$ have the same list of lengths in disjoint cycle type representation, then there exists a $\tau \in S_n$ such that $\tau \alpha \tau^{-1} = \beta$. 
+
+    Let $\alpha = (a_1, a_2, \dots, a_n)(b_1, b_2, \dots, b_m)\dots$ and let \newline $\beta = (a_1', a_2', \dots, a_n')(b_1', b_2', \dots, b_m')\dots$. Let $\tau$ be represented in the following way:
+
+    $$\tau = \begin{bmatrix}
+        a_1 & \dots & a_n & b_1 & \dots & b_m & \dots \\
+        a_1' & \dots & a_n' & b_1' & \dots & b_m' & \dots 
+    \end{bmatrix}$$
+
+    Then $\tau \alpha \tau^{-1} = \beta$. To see this, we consider where each of these permutations maps any $x_k'$. Clearly $\beta(x_k') = x_{k+1}'$ modulo the number of elements in the cycle associated with $x_k$'. We also have the following based on our construction:
+
+    $$\tau \alpha \tau^{-1} (x_k') = \tau \alpha x_k = \tau x_{k+1} = x_{k+1}'$$
+
+    Thus, we have constructed a $\tau$ such that $\tau \alpha \tau^{-1} = \beta$ given that $\alpha$ and $\beta$ have the same list of lengths in disjoint cycle type representation.
+
+    Since we have proved both implications, we have shown that given $\alpha, \beta \in S_n$, there exists a $\tau \in S_n$ such that $\tau \alpha \tau^{-1} = \beta$ if and only if $\alpha$ and $\beta$ have the same list of lengths in disjoint cycle type representation.
+
+    \item If $H$ were a subgroup, it would contain the identity of $A_4$, $\alpha \in H$ would imply $\alpha^{-1} \in H$, and $\alpha, \beta \in H$ would imply $\alpha\beta \in H$. To prove that $H$ is not a subgroup, we will show that $H$ does not satisfy the closure property.
+
+    $A_4$ is the set of all permutations in $S_4$ which can be written as the product of an even number of transpositions. This set consists of the identity, products of two transpositions with disjoint cycles, and 3-cycles, since 3-cycles can be written as the product of two 2-cycles which are not disjoint. Thus, the elements of $A_4$ are as follows:
+
+    $$\left\{\begin{array}{cc}
+         &  (1), (12)(34), (13)(24), (14)(23), (123),\\
+         &  (132), (124), (142), (134), (143), (234), (243)
+    \end{array}\right\}$$
+
+    
+
+    To verify that these are all the elements of $A_4$, we see that we have listed 12 elements, and $12 = \frac{4!}{2}$, which is what we would expect.
+
+    Since $H$ contains the squares of these elements, we can see that $H$ contains the following permutations:
+
+    $$\{(1), (132), (123), (142), (124), (143), (134), (243), (234)\}$$
+
+    If we multiply $(132)$ and $(142)$, we get $(132)(142) = (14)(23)$, which is not an element of $H$. Thus, $H$ is not closed under the group operation, and so it cannot be a subgroup. 
+
+    \item 
+    \begin{enumerate}
+        \item (2341)(2143) = (1)
+        \item (2143)(1234) = (1)
+        \item $\alpha\beta\gamma = \alpha(1) = \alpha$
+        \item For each of $\alpha, \beta, $ and $\gamma$, the order is the least common multiple of the length(s), which is 4.
+        \item Since $\alpha\beta = (1)$, $\alpha^{-1} = \beta$
+        \item $\alpha = (14)(13)(12)$, odd
+        
+        $\beta = (23)(24)(12)$, odd
+        
+        $\gamma = (12)(23)(34)$, odd
+    \end{enumerate}
+    
+\end{enumerate}
+
+\end{document}

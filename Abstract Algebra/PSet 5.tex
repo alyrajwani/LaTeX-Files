@@ -1,0 +1,310 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\newcommand{\sk}{\smallskip}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\title{Math 1530 PSet 4}
+\author{Aly Rajwani}
+\date{October 2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item Let $f: A \rightarrow B$ be a group homomorphism. Show that $f(A)$ is a subgroup of $B$.
+        \begin{proof}[Solution.]
+        
+        Recall the definition of a homomorphism. A homomorphism $f$ from a group $G$ to a group $G'$ is a mapping that satisfies $f(ab) = f(a)f(b)$ for all $a, b \in G$. We will use the following properties of homomorphisms which were proved in class in the solution:
+        
+            \begin{enumerate}
+                \item $f(e_G) = e_{G'}$
+                \item $f(a^{-1}) = f(a)^{-1}$
+            \end{enumerate}
+
+        \sk
+
+        Using this definition, along with the one-step subgroup test, we will show that $f(A)$ is a subgroup of $B$. 
+
+        \sk
+
+        First, since $A$ is a group, $A$ contains the identity, denoted $e_A$. Thus, $e_B = f(e_A) \in f(A)$, and so $f(A)$ is non-empty and contains the identity. 
+
+        \sk
+
+        Second, we show that if $a, b \in f(A)$, then $ab^{-1} \in f(A)$, which will prove the existence of inverses as well as closure, thus proving $f(A)$ is a subgroup of $B$.
+
+        \sk
+
+        Let $a, b \in A$. Then, since $A$ is a group, $ab^{-1} \in A$. These three statements imply that $f(a), f(b), \text{ and } f(ab^{-1}) \in f(A)$. Since $f$ is a homomorphism, $f(a)f(b)^{-1} = f(a)f(b^{-1}) = f(ab^{-1}) \in f(A)$. Thus, $f(a), f(b) \in f(A)$ imply that $f(a)f(b)^{-1} \in A$, and so $f(A)$ is a subgroup by the one-step subgroup test.
+        \end{proof}
+        
+
+        \item Let $b \in B$ such that $f(a) = b$. Show that $f^{-1}(b)$ is the coset $a\text{Ker}(f)$.
+
+        \begin{proof}[Solution.]
+            Recall the definition of $\text{Ker}(f)$, which is that $\text{Ker}(f) = \{x \in A : f(x) = e_B\}$, where $e_B$ is the identity of $B$. Thus, the definition of $a\text{Ker}(f)$ is the set $\{ax : x \in A, f(x) = e_B\}$. 
+
+            \sk
+
+            Further recall that the definition of $f^{-1}(b)$ is the set $\{a \in A : f(a) = b\}$
+
+            \sk
+
+            With these definitions in mind, we will show that this statement holds by proving that $a\text{Ker}(f) \subseteq f^{-1}(b)$, and vice versa.
+
+            \sk
+
+            First, we show that $g \in a\text{Ker}(f)$ implies $g \in f^{-1}(b)$.
+
+            Since $g \in a\text{Ker}(f)$, we know that $g = ax$, where $f(x) = e_B$. Thus, $f(g) = f(ax) = f(a)f(x)$. Since $f(x) = e_B$, this simplifies to $f(g) = f(a)$, and we are given that $f(a) = b$. We conclude that $f(g) = b$, and so by definition, $g \in f^{-1}(b)$.
+
+            \sk
+
+            Second, we show that $g \in f^{-1}(b)$ implies $g \in a\text{Ker}(f)$. 
+
+            Since $g \in f^{-1}(b)$, we know that $f(g) = b$, and we are given that $f(a) = b$. Thus, $f(g) = f(a)$. We can multiply on the left by $f(a)^{-1}$ to get $f(a)^{-1}f(g) = e_B$. Then, using properties of homomorphisms, we get that $e_B = f(a)^{-1}f(g) = f(a^{-1})f(g) = f(a^{-1}g)$. Thus, $a^{-1}g \in \text{Ker}(f)$. Left multiplying by $a$, we get that $g \in a\text{Ker}(f)$. 
+
+            \sk
+
+            Since we proved both that $a\text{Ker}(f) \subseteq f^{-1}(b)$ and $f{-1}(b) \subseteq a\text{Ker}(f)$, the two sets must be equal. 
+        \end{proof}
+    \end{enumerate}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item Let $G$ be a group, and consider $Z = Z(G)$, the center of $G$. Construct a bijection $\psi$ from the cosets of $Z$ to the set $\{\varphi_a : a \in G\}$ of conjugations of $G$. Remember to show your bijection is well-defined (in other words, if $gZ$ is a coset, you need to show that if $gZ = hZ$ then $\psi(gZ) = \psi(hZ))$! Furthermore, show that this bijection satisfies the following property: $\psi(ghZ) = \psi(gZ) \circ \psi(hZ).$
+
+    \begin{proof}[Solution.]
+        We are given two sets, the cosets of the center of $G$ and the conjugations of $G$, and we wish to create a bijection between the two. Representing each of these sets symbolically will provide an intuitive candidate for the bijection. 
+
+        \sk
+
+        The set of cosets of $Z$ can be represented as $\{gZ : g \in G\}$. The set of conjugations of $G$ can be represented as $\{\varphi_g : g \in G\}$. Thus, it is natural to define our bijection as follows: $\psi: \{gZ : g \in G\} \rightarrow \{\varphi_g : g \in G\}$ where $\psi(gZ) = \varphi_g$.
+
+        \sk
+
+        Now, we must show four things:
+        \begin{enumerate}
+            \item[(i)] $\psi$ is well-defined
+            \item[(ii)] $\psi$ is injective
+            \item[(iii)] $\psi$ is surjective
+            \item[(iv)] $\psi$ satisfies $\psi(ghZ) = \psi(gZ) \circ \psi(hZ)$
+        \end{enumerate}
+
+        \sk
+
+        First, we show $\psi$ is well defined, namely that if $gZ = hZ$, then $\psi(gZ) = \psi(hZ)$. We start by assuming $gZ = hZ$. Since the identity $e$ is a member of $Z$, $g$ is a member of $gZ$. Since $gZ = hZ$, $g \in hZ$, and so $g$ can be represented as $hz$ for some $z \in Z$. Then for all $a \in G$, $\varphi_g(a) = gag^{-1} = (hz)a(hz)^{-1} = hzaz^{-1}h=$. Since $z \in Z$, $z$ commutes with every element in $G$, and in particular $z$ commutes with $a$. Thus, $hzaz^{-1}h^{-1} = hazz^{-1}h^{-1} = hah^{-1}$. Connecting the equalities, we have that for every $a \in G$, $\varphi_g(a) = gag^{-1} = hah^{-1} = \varphi_h(a)$. This is the definition of two functions being equal, so $\varphi_g = \varphi_h$. Thus, $gZ = hZ$ implies $\psi(gZ) = \varphi_g = \varphi_h = \psi(hZ)$, and so $\psi$ is well defined. 
+
+        \sk
+
+        Second, we show $\psi$ is injective, namely that if $\psi(gZ) = \psi(hZ)$, then $gZ = hZ$. We start by assuming $\psi(gZ) = \psi(hZ)$, which implies that $\varphi_g = \varphi_h$. Two functions being equal means that are equal for every input, and so we have that for all $a \in G$, $gag^{-1} = hah^{-1}$. If we left multiply by $h^{-1}$ and right multiply by $g$, we get $h^{-1}ga = ah^{-1}g$. So $h^{-1}g$ commutes with $a$, but since $a$ was arbitrary, $h^{-1}g$ commutes with every element of $G$, and so $h^{-1}g$ is in the the center of the group $Z$. This implies that $hh^{-1}g = g \in hZ$. Since $g \in hZ$, $g = hz$ for some $z \in Z$. Thus, $gZ = hzZ = hZ$. So $\psi(gZ) = \psi(hZ)$ implies $gZ = hZ$, and so $\psi$ is injective.
+
+        \sk
+
+        Third, we show that $\psi$ is surjective, namely that for every $\varphi_g \in \{\varphi_g : g \in G\}$, there is a $hZ \in \{hZ : h \in G\}$ such that $\psi(hZ) = \varphi_g$. Take $h = g$, and then by definition, $\psi(hZ) = \psi(gZ) = \varphi_g$. Thus, $\psi$ is surjective. 
+
+        \sk
+
+        Fourth, we show that $\psi$ satisfies $\psi(ghZ) = \psi(gZ) \circ \psi(hZ)$. By definition, $\psi(ghZ) = \varphi_{gh}$. So for all $a \in G$, $\varphi_{gh}(a) = (gh)a(gh)^{-1}$. We know that $(gh)^{-1} = h^{-1}g^{-1}$, so $\varphi_{gh} = ghah^{-1}g^{-1}$. Next, we consider $\psi(gZ) \circ \psi(hZ)$. Since $\psi(hZ) = \varphi_h$, for all $a \in G$, $\varphi_h(a) = hah^{-1}$, so $(\psi(gZ) \circ \psi(hZ))(a) = (\psi(gZ))(hah^{-1})$. Similarly, for all $a \in G$, $\varphi_g(a) = gag^{-1}$, so $(\psi(gZ))(hah^{-1}) = ghah^{-1}g^{-1}$. This is identical to the result we got form $\psi(ghZ)$, so $\psi(ghZ) = \psi(gZ) \circ \psi(hZ)$. 
+    \end{proof}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item For the following subgroups $H$ of $G$, describe all the left cosets.
+    \begin{enumerate}
+        \item $H = \{\pm 1\}$ in the quaternions.
+        \begin{proof}[Solution.]
+            There are four left cosets:
+            \begin{enumerate}
+                \item[(i)] $1\cdot H = -1 \cdot H = \{\pm 1\}$
+                \item[(ii)] $i\cdot H = -i \cdot H = \{\pm i\}$
+                \item[(iii)] $j\cdot H = -j \cdot H = \{\pm j\}$
+                \item[(iv)] $k\cdot H = -k \cdot H = \{\pm k\}$
+            \end{enumerate}
+        \end{proof}
+        
+        \item $H = \{0, 6, 12, 18, 24\}$ in $\Z/30\Z$.
+            \begin{proof}[Solution.]
+            There are six left cosets:
+            \begin{enumerate}
+                \item[(i)] $0 + H = \{0, 6, 12, 18, 24\}$
+                \item[(ii)] $1 + H = \{1, 7, 13, 19, 25\}$
+                \item[(iii)] $2 + H = \{2, 8, 14, 20, 26\}$
+                \item[(iv)] $3 + H = \{3, 9, 15, 21, 27\}$
+                \item[(v)] $4 + H = \{4, 10, 16, 22, 28\}$
+                \item[(vi)] $5 + H = \{5, 9, 17, 23, 29\}$
+            \end{enumerate}
+            Any other coset $a + H$ is equal to $a \mod 6 + H$
+            \end{proof}
+        
+        \item $H = x$-axis in $\R^2$ (thought of as a group under addition of vectors, component-wise).
+        \begin{proof}[Solution.]
+            $H$ can be represented as $\{(a, 0) : a \in \R\}$. If we take a fixed point $(x_0, y_0) \in \R^2$, then the coset $(x_0, y_0) + H$ is $\{(x_0 + a, y_0) : x, y, a \in \R\}$ . Then, the set of all left cosets of $H$ is $\{\{(x + a, y) : a \in \R\} : x, y \in \R\}$. Geometrically, this is the set of all lines parallel to the $x-$axis.
+        \end{proof}
+        
+        \item $H = \Z$ in $\R$ (under addition).
+        \begin{proof}[Solution.]
+            If we fix some $x_0 \in \R$, then $x + H$ is the set $\{n + x : n \in \Z\}$. Geometrically, a left coset is a set of points which are an integer distance apart. This interpretation means we only need to consider $x$ values between $0$ and $1$, since any other values will have an $x$ between $0$ and $1$ that is a representative of the coset. Then, the set of all cosets is $\{x + \Z : x \in [0, 1)\}$.
+        \end{proof}
+    \end{enumerate}
+
+    
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item Let $G$ be a finite Abelian group and let $n$ be a positive integer that is relatively prime to $|G|$. Prove that the mapping $a \mapsto a^n$ is an automorphism of $G$.
+
+    \begin{proof}[Solution.]
+    Recall the definition of an automorphism, which is an isomorphism from $G$ to itself. We will denote the mapping by the function $f$. To prove that $f$ is an automorphism, we will show three statements:
+        \begin{enumerate}
+            \item[(i)] $f$ satisfies $f(ab) = f(a)f(b)$ for all $a, b \in G$
+            \item[(ii)] $f$ is one-to-one
+            \item[(iii)] $f$ is onto
+        \end{enumerate}
+
+    First, we show that $f$ is operation preserving. Take any $a, b \in G$. Then $f(a) = a^n$ and $f(b) = b^n$. $f(ab) = (ab)^n$, but since $G$ is an Abelian group, we can rewrite $(ab)^n$ as $a^nb^n$. Thus, $f(a)f(b) = a^nb^n = (ab)^n = f(ab)$, and so $f$ is operation preserving. 
+
+    \sk 
+
+    Second, we show $f$ is one-to-one. Suppose $f(a) = f(b)$, meaning that $a^n = b^n$. Since $n$ is coprime with $|G|$, there exists an $m$ such that $nm \equiv 1 \mod |G|$. So, $a = a^{mn} = (a^n)^m$. Since $a^n = b^n$, we can make a substitution in the equation. We get that $(a^n)^m = (b^n)^m = b^{nm} = b$. Connecting these strings of equalities, we get that $a = b$. Since $f(a) = f(b)$ implies $a = b$, $f$ is one-to-one. 
+
+    \sk
+
+    Third, we show $f$ is onto. For any $b \in G$, we want to show that there is an $a$ such that $a^n = b$. Since $n$ is coprime with $|G|$, there exists an $m$ such that $nm \equiv 1 \mod |G|$. Let $a = b^{m}$. Then $a^n = (b^{m})^n = b^{mn} = b$. Thus, all $b \in G$ have an $a$ such that $a^n = b$, and so $f$ is onto. 
+
+    \sk
+
+    Since $f: G \rightarrow G$ is operation-preserving, onto-to-one, and onto, $f$ is an automorphism.  
+    
+    \end{proof}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item \begin{enumerate}
+        \item Let $f : A \rightarrow B$ be a group homomorphism and $f': A \rightarrow B$ be a group homomorphism. Show that $\{a \in A : f(a) = f'(a)\}$ is a subgroup.
+
+        \begin{proof}[Solution.]
+            We will use the two-step subgroup test to show that this set, which we denote $S$ for convenience, is a subgroup.
+
+            \sk
+
+            First, we show $S$ is non-empty. Let $e_A$ be the identity of $A$ and $e_B$ be the identity of $B$. Then since $f$ is a homomorphism, $f(e_A) = e_B$, and similarly, $f'(e_A) = e_B$. Thus, $e_A \in S$, and so $S$ is non-empty. 
+
+            \sk
+
+            Next, we show that if $a \in S$, then $a^{-1}$ in $S$. Since $a \in S$, $f(a) = f'(a)$. Since $f(a) = f'(a)$, we can take the inverse of both sides to get $(f(a))^{-1} = (f'(a))^{-1}$. Since homomorphisms satisfy $g(x)^{-1} = g(x^{-1})$, we can say that $f(a^{-1}) = f'(a^{-1})$. Thus, $a^{-1} \in S$. 
+
+            \sk
+
+            Next, we show that if $a, b \in S$, then $ab \in S$. Since $a, b \in S$, we have that $f(a) = f'(a)$ and $f(b) = f'(b)$. Consider the term $f(ab)$. Since $f$ is a homomorphism, $f(ab) = f(a)f(b)$. But, we can substitute $f'(a)$ for $f(a)$ and $f'(b)$ for $f(b)$ to get $f(ab) = f'(a)f'(b)$. Since $f'$ is a homomorphism, $f'(a)f'(b) = f'(ab)$. Thus, $f(ab) = f'(ab)$, and so $ab \in S$.
+            
+            \sk
+
+            Since $S$ is non-empty, $a \in S$ implies $a^{-1} \in S$, and $a, b \in S$ implies $ab \in S$, $S$ is a subgroup.
+        \end{proof}
+
+        \item Let $G$ be a group and $g \in G$. Show that there is a unique homomorphism $f : \Z \rightarrow G$ such that $f(1) = g$.
+
+        \begin{proof}[Solution.]
+
+        We are given that $f(1) = g$ and $f$ is a homomorphism. Consider $f(n)$ for any $n \in \Z$. Then $f(n) = f(1 + 1 + \dots + 1) = f(1) + f(1) + \dots + f(1) = ng$. In each case, there are $n$ copies of $1$ ad we can distribute $f$ to each because $f$ is a homomorphism. Since $f(n) = ng$, the output of $f$ applied to $n$ is uniquely determined by the output of $f$ applied to $1$, and so there is a unique homomorphism. 
+
+        \sk
+
+        So, the unique homomorphism from $\Z$ to $G$ is defined by $f(n) = ng$ where $f(1) = g$. This is a homomorphism since $f(n + m) = (n + m)g = ng + mg = f(n) + f(m)$, and so $f$ is operation preserving. 
+            
+        \end{proof}
+    \end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item Find all group homomorphisms:
+    \begin{enumerate}
+        \item $f: \Z \rightarrow \Z$
+            \begin{proof}[Solution.]
+            Any group homomorphism from $\Z$ to $\Z$ is uniquely determined by the mapping of $f(1)$. 
+
+            \sk
+
+            Let $f(1) = x$, and consider $f(n)$ for some fixed $n \in \Z$. Then $f(n) = f(1 + 1 + \dots + 1) = f(1) + f(1) + \dots + f(1)$. In each case, there are $n$ copies, and we can distribute $f$ to each 1 in this way because $f$ is a homomorphism. Thus, $f(n) = nf(1) = nx$. 
+
+            \sk
+
+            This satisfies being a group homomorphism since $f(a+b) = x(a+b) = xa + xb = f(a) + f(b)$.
+
+            \sk
+            
+            Thus, the set of all group homomorphisms from $\Z$ to $\Z$ can be denoted as $\{f_x : x \in \Z \}$, where $f_x(n) = xn$ for $n \in \Z$.
+            
+            \end{proof} 
+        \item $f: \Z \rightarrow \Q$
+            \begin{proof}[Solution.]
+            Any group homomorphism from $\Z$ to $\Q$ is uniquely determined by the mapping of $f(1)$. 
+
+            \sk
+
+            Let $f(1) = q$, and consider $f(n)$ for some fixed $n \in \Z$. Then $f(n) = f(1 + 1 + \dots + 1) = f(1) + f(1) + \dots + f(1)$. In each case, there are $n$ copies, and we can distribute $f$ to each 1 in this way because $f$ is a homomorphism. Thus, $f(n) = nf(1) = nq$. 
+
+            \sk
+
+            This satisfies being a group homomorphism since $f(a+b) = q(a+b) = qa + qb = f(a) + f(b)$.
+
+            \sk
+            
+            Thus, the set of all group homomorphisms from $\Z$ to $\Q$ can be denoted as $\{f_q : q \in \Q \}$, where $f_q(n) = qn$ for $n \in \Z$.
+            
+            \end{proof} 
+        \item $f: \Q \rightarrow \Z$
+            \begin{proof}[Solution.]
+            The only possible group homomorphism if $f(r) = 0$ for all $r \in \Q$.
+
+            \sk
+
+            Let $f(1) = q$ for some $q \in \Q$. Then $f(1) = f\left(\frac{1}{m} + \frac{1}{m} + \dots + \frac{1}{m}\right) = f\left(\frac{1}{m}\right) + f\left(\frac{1}{m}\right) + \dots + f\left(\frac{1}{m}\right)$. In each case, there are $m$ copies, and we can distribute $f$ to each $\frac{1}{m}$ in this way because $f$ is a homomorphism. Thus, $f(1) = mf\left(\frac{1}{m}\right)$, and $f(1) = r$. 
+
+            \sk
+
+            We can combine these two equalities so say that $mf\left(\frac{1}{m}\right) = r$, and so $f\left(\frac{1}{m}\right) = \frac{r}{m}$. Since the range of $f$ is $\Z$, we must have that $\frac{r}{m} \in \Z$ no matter the choice of $m$, but this can only be achieved if $r = 0$. Thus, the only group homomorphism from $\Q$ to $\Z$ is $f = 0$.
+            \end{proof}
+            
+        \item $f: \Q \rightarrow \Q$
+            \begin{proof}[Solution.]
+            Any group homomorphism from $\Q$ to $\Q$ is uniquely determined by the mapping of $f(1)$. 
+
+            \sk
+
+            Let $f(1) = q$ for some $q \in \Q$. Then $f(1) = f\left(\frac{1}{m} + \frac{1}{m} + \dots + \frac{1}{m}\right) = f\left(\frac{1}{m}\right) + f\left(\frac{1}{m}\right) + \dots + f\left(\frac{1}{m}\right)$. In each case, there are $m$ copies, and we can distribute $f$ to each $\frac{1}{m}$ in this way because $f$ is a homomorphism. Thus, $f(1) = mf\left(\frac{1}{m}\right)$, and $f(1) = r$.
+
+            \sk
+
+            We can combine these two equalities so say that $mf\left(\frac{1}{m}\right) = q$, and so $f\left(\frac{1}{m}\right) = \frac{q}{m}$
+
+            \sk
+            
+            Now consider any rational number $\frac{a}{b} \in \Q$. $f\left(\frac{a}{b}\right) = f\left(\frac{1}{b} + \frac{1}{b} + \dots + \frac{1}{b}\right) = f\left(\frac{1}{b}\right) + f\left(\frac{1}{b}\right) + \dots + f\left(\frac{1}{b}\right)$. In each case, there are $a$ copies, and we can distribute the $f$ to each $\frac{1}{b}$ because $f$ is a homomorphism. We also know that $f\left(\frac{1}{b}\right) =\frac{q}{b}$, and so $f\left(\frac{a}{b}\right) = q\frac{a}{b}$. 
+
+            \sk
+
+            This satisfies being a group homomorphism since $f\left(\frac{a}{b} + \frac{c}{d}\right) = q\left(\frac{a}{b} + \frac{c}{d}\right) = q\frac{a}{b} + q\frac{c}{d} = f\left(\frac{a}{b}\right) + f\left(\frac{c}{d}\right)$.
+
+            \sk 
+
+            Thus, the set of all group homomorphisms from $\Q$ to $\Q$ can be denoted as $\{f_q : q \in \Q \}$, where $f_q(r) = qr$ for $r \in \Q$.
+            \end{proof} 
+    \end{enumerate}
+
+    
+\end{enumerate}
+
+
+
+\end{document}
